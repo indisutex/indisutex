@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="legal.css">
+    <!-- Meta Pixel: solo se activa si el usuario ya aceptó cookies en la página principal -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
-    fbq("init","703208404945102");
-    fbq("track","PageView");
+    try{ if(localStorage.getItem("cookiesOk")){ fbq("init","703208404945102"); fbq("track","PageView"); } }catch(e){}
     </script>
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
@@ -45,7 +45,7 @@
             <h3>Canales de atención PQR</h3>
             <ul>
                 <li><strong>WhatsApp oficial:</strong> +57 310 612 0366 (canal principal)</li>
-                <li><strong>Correo electrónico:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5930373d302a2c2d3c21193e34383035773a3634">[email&#160;protected]</a></li>
+                <li><strong>Correo electrónico:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a33343e33292f2e3f22293b291a3d373b333674393537">[email&#160;protected]</a></li>
                 <li><strong>Presencial:</strong> CC Shangai Local 125 | CC El Caleño Local 410, Cali</li>
             </ul>
 

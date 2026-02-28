@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="legal.css">
+    <!-- Meta Pixel: solo se activa si el usuario ya aceptó cookies en la página principal -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
-    fbq("init","703208404945102");
-    fbq("track","PageView");
+    try{ if(localStorage.getItem("cookiesOk")){ fbq("init","703208404945102"); fbq("track","PageView"); } }catch(e){}
     </script>
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
@@ -48,8 +48,8 @@
             <h3>2. Objeto</h3>
             <p>El sitio web tiene como finalidad presentar la oferta comercial de INDISUTEX S.A.S., facilitar el contacto con clientes y revendedores, y proveer información legal y corporativa requerida por Meta Business y las entidades reguladoras colombianas.</p>
 
-            <h3>3. Canal de ventas</h3>
-            <p>Las transacciones comerciales se realizan exclusivamente a través de WhatsApp: +57 310 612 0366. El sitio web no procesa pagos en línea directamente. Los pedidos se confirman mediante acuerdo entre las partes por mensaje.</p>
+            <h3>3. Canal de ventas y consentimiento de comunicaciones</h3>
+            <p>Las transacciones comerciales se realizan exclusivamente a través de WhatsApp: +57 310 612 0366. El sitio web no procesa pagos en línea directamente. Los pedidos se confirman mediante acuerdo entre las partes por mensaje. Al iniciar una conversación con INDISUTEX S.A.S. vía WhatsApp, el usuario consiente voluntariamente recibir información de productos, catálogos y actualizaciones de su pedido por ese canal. <strong>El usuario puede cancelar las comunicaciones en cualquier momento</strong> enviando la palabra "DETENER". No se realizan envíos masivos no solicitados. INDISUTEX S.A.S. opera bajo las Políticas de Uso Aceptable de WhatsApp Business.</p>
 
             <h3>4. Precios</h3>
             <p>Los precios de los productos pueden variar sin previo aviso según disponibilidad y condiciones del mercado. Los precios mayoristas aplican según el volumen de compra acordado. Las imágenes son de referencia; los colores pueden variar según disponibilidad de inventario.</p>
@@ -63,7 +63,10 @@
             <h3>7. Ventas mayoristas</h3>
             <p>Las condiciones comerciales de las ventas mayoristas pueden variar frente a ventas al consumidor final. El canal mayorista está dirigido exclusivamente a comerciantes y revendedores con actividad comercial verificable.</p>
 
-            <h3>8. Legislación aplicable</h3>
+            <h3>8. Herramientas de análisis y publicidad digital</h3>
+            <p>Este sitio utiliza el Meta Pixel (ID: 703208404945102) únicamente tras el consentimiento explícito del usuario mediante el aviso de cookies. Esta herramienta nos permite medir el rendimiento de campañas publicitarias en las plataformas de Meta (Facebook e Instagram). El usuario puede revocar su consentimiento en cualquier momento vaciando las cookies del navegador. INDISUTEX S.A.S. cumple las <a href="https://www.facebook.com/policies/ads/" target="_blank" rel="noopener">Políticas de Publicidad de Meta</a> y sus <a href="https://www.facebook.com/business/help/156422771495249" target="_blank" rel="noopener">Términos de Servicio para Empresas</a>.</p>
+
+            <h3>9. Legislación aplicable</h3>
             <p>Estos términos se rigen por las leyes de la República de Colombia. Cualquier controversia será resuelta ante los jueces competentes de la ciudad de Cali.</p>
 
             <p class="legal-date">Última actualización: enero de 2026</p>
