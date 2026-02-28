@@ -17,21 +17,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Meta Pixel -->
+    <!-- Meta Pixel (Solo estructura base para evitar errores de consola, no rastrea sin consentimiento) -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','703208404945102');fbq('track','PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=703208404945102&ev=PageView&noscript=1"/></noscript>
-
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "voabt7y6vp");
-    </script>
 </head>
 <body>
 
@@ -454,7 +444,7 @@
 </a>
 
 <div class="cookie-bar" id="cookieBar" role="alert" aria-live="polite">
-    <p>Usamos cookies y el Meta Pixel para mejorar tu experiencia y optimizar nuestra publicidad. Al navegar, aceptas nuestra <a href="privacidad.html">Política de Privacidad</a>.</p>
+    <p>Usamos cookies y el Píxel de Meta para mejorar tu experiencia y ofrecerte anuncios relevantes. Haz clic en "Entendido" para darnos tu consentimiento explícito. Lee nuestra <a href="privacidad.html">Política de Privacidad</a>.</p>
     <button class="cookie-btn" id="cookieAccept">Entendido</button>
 </div>
 
@@ -484,11 +474,38 @@
   /* ── Scroll shadow navbar ── */
   window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY>20); }, {passive:true});
 
-  /* ── Cookies ── */
+  /* ── Cookies y Tracking Scripts (Consentimiento Meta/Clarity) ── */
   var bar = document.getElementById('cookieBar');
   var btn = document.getElementById('cookieAccept');
-  if(!localStorage.getItem('cookiesOk') && bar) bar.classList.add('visible');
-  if(btn) btn.addEventListener('click', function(){ bar.classList.remove('visible'); try{localStorage.setItem('cookiesOk','1');}catch(e){} });
+
+  function loadTrackingScripts() {
+      // 1. Inicializar Meta Pixel (solo tras aceptar)
+      fbq('init', '703208404945102');
+      fbq('track', 'PageView');
+
+      // 2. Inicializar Microsoft Clarity (solo tras aceptar)
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "voabt7y6vp");
+  }
+
+  // Comprobar si ya existe el consentimiento en LocalStorage
+  if(localStorage.getItem('cookiesOk')) {
+      loadTrackingScripts();
+  } else if(bar) {
+      bar.classList.add('visible');
+  }
+
+  // Dar consentimiento al hacer clic
+  if(btn) {
+      btn.addEventListener('click', function(){ 
+          bar.classList.remove('visible'); 
+          try{ localStorage.setItem('cookiesOk','1'); }catch(e){} 
+          loadTrackingScripts();
+      });
+  }
 
   /* ── Fade-in viewport ── */
   var faders = document.querySelectorAll('.advantage-card, .brand-card, .step-item');
