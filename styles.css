@@ -1262,6 +1262,7 @@ p { color: var(--ink-mid); }
 .ig-track-outer {
   overflow: hidden;
   flex: 1;
+  min-width: 0;
   border-radius: 20px;
 }
 
@@ -1271,6 +1272,7 @@ p { color: var(--ink-mid); }
   transition: transform .45s cubic-bezier(.4,0,.2,1);
   will-change: transform;
   align-items: stretch;
+  backface-visibility: hidden;
 }
 
 /* ── Flechas ── */
@@ -1314,9 +1316,50 @@ p { color: var(--ink-mid); }
   .ig-card { flex: 0 0 calc(50% - 10px); max-width: none; margin-right: 20px; }
 }
 @media (max-width: 639px) {
-  .ig-card { flex: 0 0 calc(100% - 0px); max-width: none; margin-right: 0; }
-  .ig-arrow { width: 36px; height: 36px; }
-  .ig-carousel-wrapper { gap: 4px; }
+  /* Card ocupa todo el outer, con peek de 24px de la siguiente */
+  .ig-track-outer {
+    border-radius: 16px;
+    /* Permite ver un poco de la siguiente card */
+    overflow: visible;
+    clip-path: inset(0 -24px 0 0);
+  }
+  .ig-card {
+    flex: 0 0 calc(100% - 24px);
+    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
+    margin-right: 12px;
+  }
+  .ig-arrow {
+    width: 38px; height: 38px;
+    position: absolute;
+    z-index: 10;
+    top: 120px; /* centro visual de la imagen */
+  }
+  #igPrev { left: 4px; }
+  #igNext { right: 4px; }
+  .ig-carousel-wrapper {
+    gap: 0;
+    position: relative;
+    padding: 0;
+  }
+  /* Botones CTA en móvil: columna para no cortarse */
+  .ig-cta-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ig-btn {
+    font-size: .82rem;
+    padding: 10px 16px;
+    width: 100%;
+    justify-content: center;
+  }
+  /* Card body más cómodo */
+  .ig-card-body { padding: 14px 14px 16px; }
+  .ig-brand-name { font-size: .88rem; }
+  /* Imagen más baja en móvil para que todo quepa sin scroll */
+  .ig-card-img-wrap { height: 200px; }
+  /* Swipe hint visible */
+  .ig-swipe-hint { display: block; }
 }
 
 /* ── Imagen / preview visual ── */

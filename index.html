@@ -79,7 +79,6 @@
       <p>Las últimas colecciones de nuestras marcas. Toca cada tarjeta para ver más en Instagram.</p>
     </div>
 
-    <!-- Carrusel de marcas -->
     <div class="ig-carousel-wrapper">
       <button class="ig-arrow ig-arrow--prev" id="igPrev" aria-label="Anterior">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -238,7 +237,6 @@
       </button>
     </div>
 
-    <!-- Dots indicators -->
     <div class="ig-dots" id="igDots" aria-hidden="true">
       <span class="ig-dot active"></span>
       <span class="ig-dot"></span>
@@ -360,7 +358,6 @@
             <p>Producción propia, diseños reales. Síguenos y sé la primera en ver las nuevas colecciones.</p>
         </div>
 
-        <!-- Tabs -->
         <div class="tt-tabs" role="tablist" aria-label="Marcas en TikTok">
             <button class="tt-tab active" role="tab" aria-selected="true" aria-controls="tt-sara" data-brand="sara">
                 <img src="Logo_Saramantha_Pijamas.jpeg" alt="" class="tt-tab-logo">
@@ -633,11 +630,12 @@
       <button class="cookie-btn" id="cookieDecline" style="background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;">Solo esenciales</button>
     </div>
 </div>
+
 <script>
 (function(){
   'use strict';
 
-  /* Hamburguesa */
+  /* ── Hamburguesa ── */
   var burger = document.getElementById('burgerBtn');
   var menu   = document.getElementById('navMenu');
   var header = document.getElementById('navbar');
@@ -656,30 +654,27 @@
   document.addEventListener('click', function(e){ if(menu.classList.contains('is-open') && !header.contains(e.target)) closeMenu(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
 
-  /* Scroll shadow navbar */
+  /* ── Scroll shadow navbar ── */
   window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY>20); }, {passive:true});
 
-  /* Cookies y Tracking */
+  /* ── Cookies y Tracking ── */
   var bar        = document.getElementById('cookieBar');
   var btnAccept  = document.getElementById('cookieAccept');
   var btnDecline = document.getElementById('cookieDecline');
-
   function loadTracking(){
-    if(typeof fbq === 'function'){ fbq('init','703208404945102'); fbq('track','PageView'); }
+    if(typeof fbq==='function'){ fbq('init','703208404945102'); fbq('track','PageView'); }
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window,document,'clarity','script','voabt7y6vp');
   }
-
   try{
-    var consent = localStorage.getItem('cookiesOk');
+    var consent=localStorage.getItem('cookiesOk');
     if(consent==='1'){ loadTracking(); }
     else if(consent==='0'){ /* rechazado */ }
     else if(bar){ bar.classList.add('visible'); }
   }catch(ex){ if(bar) bar.classList.add('visible'); }
-
   if(btnAccept){ btnAccept.addEventListener('click',function(){
     bar.classList.remove('visible');
     try{ localStorage.setItem('cookiesOk','1'); }catch(ex){}
@@ -690,84 +685,91 @@
     try{ localStorage.setItem('cookiesOk','0'); }catch(ex){}
   }); }
 
-  /* TikTok Tabs - filtros de marca */
+  /* ── TikTok Tabs ── */
   var ttTabs   = document.querySelectorAll('.tt-tab');
   var ttPanels = document.querySelectorAll('.tt-panel');
   ttTabs.forEach(function(tab){
     tab.addEventListener('click', function(){
       ttTabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      ttPanels.forEach(function(p){ p.classList.remove('active'); p.hidden = true; });
+      ttPanels.forEach(function(p){ p.classList.remove('active'); p.hidden=true; });
       tab.classList.add('active');
       tab.setAttribute('aria-selected','true');
-      var panel = document.getElementById(tab.getAttribute('aria-controls'));
-      if(panel){ panel.classList.add('active'); panel.hidden = false; }
+      var panel=document.getElementById(tab.getAttribute('aria-controls'));
+      if(panel){ panel.classList.add('active'); panel.hidden=false; }
     });
   });
 
-  /* TikTok Lazy-load videos */
+  /* ── TikTok Lazy-load videos ── */
   document.querySelectorAll('.tt-play-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var wrap = btn.closest('.tt-video-wrap');
-      var src  = wrap && wrap.getAttribute('data-src');
-      if(!src || wrap.querySelector('iframe')) return;
-      var iframe = document.createElement('iframe');
-      iframe.src = src;
+      var wrap=btn.closest('.tt-video-wrap');
+      var src=wrap&&wrap.getAttribute('data-src');
+      if(!src||wrap.querySelector('iframe')) return;
+      var iframe=document.createElement('iframe');
+      iframe.src=src;
       iframe.setAttribute('allowfullscreen','');
       iframe.setAttribute('scrolling','no');
       iframe.setAttribute('allow','encrypted-media;');
-      iframe.style.cssText = 'width:100%;height:100%;border:none;border-radius:12px;display:block;';
-      wrap.style.paddingBottom = '0';
-      wrap.style.height = '560px';
-      wrap.innerHTML = '';
+      iframe.style.cssText='width:100%;height:100%;border:none;border-radius:12px;display:block;';
+      wrap.style.paddingBottom='0';
+      wrap.style.height='560px';
+      wrap.innerHTML='';
       wrap.appendChild(iframe);
     });
   });
 
-  /* Instagram Carousel */
+  /* ── Instagram Carousel ── */
   (function(){
     var track = document.getElementById('igTrack');
     var cards = document.querySelectorAll('.ig-card');
     var dots  = document.querySelectorAll('.ig-dot');
     var btnP  = document.getElementById('igPrev');
     var btnN  = document.getElementById('igNext');
-    if(!track || !cards.length) return;
+    if(!track||!cards.length) return;
 
     var cur = 0;
 
     function vis(){
-      var w = window.innerWidth;
-      return w >= 1024 ? 3 : w >= 640 ? 2 : 1;
+      var w=window.innerWidth;
+      return w>=1024?3:w>=640?2:1;
     }
-    function maxIdx(){ return Math.max(0, cards.length - vis()); }
+    function maxIdx(){ return Math.max(0,cards.length-vis()); }
+
+    /* Gap debe coincidir exactamente con el margin-right del CSS:
+       ≥640px  → 20px  (desktop/tablet: .ig-card { margin-right:20px })
+       <640px  → 12px  (móvil: card ocupa calc(100%-24px) con margin-right:12px) */
+    function cardGap(){
+      return window.innerWidth>=640 ? 20 : 12;
+    }
 
     function syncDots(){
-      dots.forEach(function(d,i){ d.classList.toggle('active', i===cur); });
+      dots.forEach(function(d,i){ d.classList.toggle('active',i===cur); });
     }
 
     function goTo(idx){
-      cur = Math.max(0, Math.min(idx, maxIdx()));
-      var card = cards[0];
-      var cw   = card.getBoundingClientRect().width;
-      var gap  = 20;
-      track.style.transform = 'translateX(-' + (cur * (cw + gap)) + 'px)';
+      cur=Math.max(0,Math.min(idx,maxIdx()));
+      var cw=cards[0].getBoundingClientRect().width;
+      track.style.transform='translateX(-'+(cur*(cw+cardGap()))+'px)';
       syncDots();
     }
 
-    if(btnP) btnP.addEventListener('click', function(){ goTo(cur - 1); });
-    if(btnN) btnN.addEventListener('click', function(){ goTo(cur + 1); });
-    dots.forEach(function(d,i){ d.addEventListener('click', function(){ goTo(i); }); });
+    if(btnP) btnP.addEventListener('click',function(){ goTo(cur-1); });
+    if(btnN) btnN.addEventListener('click',function(){ goTo(cur+1); });
+    dots.forEach(function(d,i){ d.addEventListener('click',function(){ goTo(i); }); });
 
-    var tx = 0;
-    track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
-    track.addEventListener('touchend',   function(e){
-      var dx = tx - e.changedTouches[0].clientX;
-      if(Math.abs(dx) > 40) goTo(dx > 0 ? cur + 1 : cur - 1);
-    }, {passive:true});
+    /* Swipe táctil */
+    var tx=0;
+    track.addEventListener('touchstart',function(e){ tx=e.touches[0].clientX; },{passive:true});
+    track.addEventListener('touchend',function(e){
+      var dx=tx-e.changedTouches[0].clientX;
+      if(Math.abs(dx)>40) goTo(dx>0?cur+1:cur-1);
+    },{passive:true});
 
+    /* Resize */
     var rTimer;
-    window.addEventListener('resize', function(){
+    window.addEventListener('resize',function(){
       clearTimeout(rTimer);
-      rTimer = setTimeout(function(){ goTo(Math.min(cur, maxIdx())); }, 150);
+      rTimer=setTimeout(function(){ goTo(Math.min(cur,maxIdx())); },150);
     });
 
     syncDots();
