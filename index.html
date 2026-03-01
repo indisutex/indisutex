@@ -52,20 +52,43 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <div class="hero-bg"><div class="hero-grain"></div></div>
-    <div class="hero-content">
-        <span class="hero-eyebrow">Fabricantes Directos · Colombia 🇨🇴</span>
-        <h1 class="hero-title">Pijamas que te hacen<br>sentir <em>cómoda y segura</em></h1>
-        <p class="hero-sub">Compra mínima baja &nbsp;·&nbsp; Alta rotación &nbsp;·&nbsp; Envíos nacionales</p>
-        <div class="hero-ctas">
-            <a href="https://wa.me/573106120366?text=Hola%2C%20me%20interesa%20comprar%20al%20por%20mayor%2C%20%C2%BFpueden%20enviarme%20el%20cat%C3%A1logo%3F" class="btn btn-primary" target="_blank" rel="noopener" onclick="fbq('track','Lead')">Catálogo Mayorista</a>
-            <a href="https://wa.me/573106120366?text=Hola%2C%20me%20interesa%20comprar%20una%20pijama%2C%20%C2%BFqu%C3%A9%20tienen%20disponible%3F" class="btn btn-ghost" target="_blank" rel="noopener" onclick="fbq('track','Contact')">Compra al Detal</a>
+    <div class="hero-bg" id="heroBg"><div class="hero-grain"></div></div>
+
+    <div class="hero-layout">
+        <!-- Texto izquierda -->
+        <div class="hero-content" data-reveal>
+            <span class="hero-eyebrow">Fabricantes Directos · Colombia 🇨🇴</span>
+            <h1 class="hero-title">Pijamas que te hacen<br>sentir <em>cómoda y segura</em></h1>
+            <p class="hero-sub">Compra mínima baja &nbsp;·&nbsp; Alta rotación &nbsp;·&nbsp; Envíos nacionales</p>
+            <div class="hero-ctas">
+                <a href="https://wa.me/573106120366?text=Hola%2C%20me%20interesa%20comprar%20al%20por%20mayor%2C%20%C2%BFpueden%20enviarme%20el%20cat%C3%A1logo%3F" class="btn btn-primary" target="_blank" rel="noopener" onclick="fbq('track','Lead')">Catálogo Mayorista</a>
+                <a href="https://wa.me/573106120366?text=Hola%2C%20me%20interesa%20comprar%20una%20pijama%2C%20%C2%BFqu%C3%A9%20tienen%20disponible%3F" class="btn btn-ghost" target="_blank" rel="noopener" onclick="fbq('track','Contact')">Compra al Detal</a>
+            </div>
+            <div class="trust-strip">
+                <div class="trust-pill" style="--pill-delay:.55s">🔒 Compra segura</div>
+                <div class="trust-pill" style="--pill-delay:.70s">📦 Envíos a todo Colombia</div>
+                <div class="trust-pill" style="--pill-delay:.85s">💬 Atención por WhatsApp</div>
+                <div class="trust-pill" style="--pill-delay:1s">🚫 Sin spam</div>
+            </div>
         </div>
-        <div class="trust-strip">
-            <div class="trust-pill">🔒 Compra segura</div>
-            <div class="trust-pill">📦 Envíos a todo Colombia</div>
-            <div class="trust-pill">💬 Atención por WhatsApp</div>
-            <div class="trust-pill">🚫 Sin spam — solo respondemos tu consulta</div>
+
+        <!-- Imagen derecha -->
+        <div class="hero-img-wrap" data-reveal data-reveal-delay="200">
+            <div class="hero-img-frame">
+                <img src="3Carrusel.jpg"
+                     alt="Pijama Saramantha — Donald & Daisy · Colección actual"
+                     class="hero-product-img"
+                     loading="eager"
+                     fetchpriority="high"
+                     width="540" height="675">
+                <div class="hero-img-badge">
+                    <span class="hero-badge-inner">⭐ Más vendida</span>
+                </div>
+                <div class="hero-img-tag">
+                    <img src="Logo_Saramantha_Pijamas.jpeg" alt="Saramantha" class="hero-brand-logo">
+                    <span>Saramantha</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -444,16 +467,121 @@
             <h2>Impulsa tu negocio<br>con nosotros</h2>
             <p>Precios directos de fábrica para revendedoras, boutiques y distribuidores con la más alta rentabilidad.</p>
         </div>
+
+        <!-- Franja de prueba social -->
+        <div class="social-proof-strip">
+            <div class="sp-item">
+                <span class="sp-num">200+</span>
+                <span class="sp-label">distribuidores activos en Colombia</span>
+            </div>
+            <div class="sp-divider"></div>
+            <div class="sp-item">
+                <span class="sp-num">Desde $150K</span>
+                <span class="sp-label">primer pedido — sin mínimos altos</span>
+            </div>
+            <div class="sp-divider"></div>
+            <div class="sp-item">
+                <span class="sp-num">30+ ciudades</span>
+                <span class="sp-label">con despachos nacionales activos</span>
+            </div>
+            <div class="sp-divider"></div>
+            <div class="sp-item">
+                <span class="sp-num">4 marcas</span>
+                <span class="sp-label">propias con alta rotación garantizada</span>
+            </div>
+        </div>
+
+        <!-- Tarjetas de ventajas con micro-CTAs -->
         <div class="cards-grid">
-            <div class="advantage-card"><div class="advantage-icon">📈</div><h3>Alta Rentabilidad</h3><p>Márgenes competitivos diseñados para que tu negocio crezca desde el primer pedido.</p></div>
-            <div class="advantage-card"><div class="advantage-icon">🚚</div><h3>Despachos Rápidos</h3><p>Logística eficiente con despacho a cualquier ciudad de Colombia en 1 a 5 días hábiles.</p></div>
-            <div class="advantage-card"><div class="advantage-icon">👩‍💼</div><h3>Asesoría VIP</h3><p>Te orientamos en las referencias de mayor rotación y tendencias del mercado.</p></div>
-            <div class="advantage-card"><div class="advantage-icon">🏭</div><h3>Fábrica Directa</h3><p>Sin intermediarios. Compras directamente al fabricante, con la mejor calidad garantizada.</p></div>
+            <div class="advantage-card" data-reveal data-reveal-delay="0">
+                <div class="advantage-icon">📈</div>
+                <h3>Alta Rentabilidad</h3>
+                <p>Márgenes competitivos diseñados para que tu negocio crezca desde el primer pedido. Precios de fábrica reales.</p>
+                <a href="https://wa.me/573106120366?text=Hola%2C%20quiero%20conocer%20los%20precios%20y%20m%C3%A1rgenes%20de%20rentabilidad%20del%20cat%C3%A1logo%20mayorista" class="advantage-microcta" target="_blank" rel="noopener" onclick="fbq('track','Lead')">
+                    Ver precios de catálogo →
+                </a>
+            </div>
+            <div class="advantage-card" data-reveal data-reveal-delay="100">
+                <div class="advantage-icon">🚚</div>
+                <h3>Despachos Rápidos</h3>
+                <p>Logística eficiente con despacho a cualquier ciudad de Colombia en 1 a 5 días hábiles.</p>
+                <a href="envios.html" class="advantage-microcta">
+                    Ver política de envíos →
+                </a>
+            </div>
+            <div class="advantage-card" data-reveal data-reveal-delay="200">
+                <div class="advantage-icon">👩‍💼</div>
+                <h3>Asesoría VIP</h3>
+                <p>Te orientamos en las referencias de mayor rotación y tendencias del mercado para maximizar tus ventas.</p>
+                <a href="https://wa.me/573106120366?text=Hola%2C%20necesito%20asesor%C3%ADa%20para%20elegir%20las%20referencias%20de%20mayor%20rotaci%C3%B3n" class="advantage-microcta" target="_blank" rel="noopener" onclick="fbq('track','Contact')">
+                    Hablar con un asesor →
+                </a>
+            </div>
+            <div class="advantage-card" data-reveal data-reveal-delay="300">
+                <div class="advantage-icon">🏭</div>
+                <h3>Fábrica Directa</h3>
+                <p>Sin intermediarios. Compras directamente al fabricante, con la mejor calidad garantizada desde Cali.</p>
+                <a href="https://wa.me/573106120366?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20compra%20directa%20de%20f%C3%A1brica" class="advantage-microcta" target="_blank" rel="noopener" onclick="fbq('track','Lead')">
+                    Comprar directo →
+                </a>
+            </div>
         </div>
-        <div class="section-cta">
-            <p class="legal-note">*Los precios mayoristas aplican según volumen de compra. Consulta disponibilidad.</p>
-            <a href="https://wa.me/573106120366?text=Hola%2C%20estoy%20interesado%20en%20ser%20distribuidor%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n%3F" class="btn btn-primary" target="_blank" rel="noopener" onclick="fbq('track','Lead')">Quiero ser distribuidor</a>
+
+        <!-- Tabla comparativa Mayorista vs Detal -->
+        <div class="compare-wrap">
+            <h3 class="compare-title">¿Canal Mayorista o compra al detal?</h3>
+            <div class="compare-table-scroll">
+                <table class="compare-table" role="table" aria-label="Comparativa mayorista vs detal">
+                    <thead>
+                        <tr>
+                            <th scope="col">Característica</th>
+                            <th scope="col" class="col-mayor">
+                                <span class="col-badge">⭐ Mayorista</span>
+                            </th>
+                            <th scope="col" class="col-detal">Detal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Precio por unidad</td>
+                            <td class="col-mayor win">Precio de fábrica</td>
+                            <td class="col-detal">Precio público</td>
+                        </tr>
+                        <tr>
+                            <td>Pedido mínimo</td>
+                            <td class="col-mayor win">Desde $150.000</td>
+                            <td class="col-detal">1 unidad</td>
+                        </tr>
+                        <tr>
+                            <td>Catálogo completo</td>
+                            <td class="col-mayor win">✅ Acceso total</td>
+                            <td class="col-detal">Selección limitada</td>
+                        </tr>
+                        <tr>
+                            <td>Asesoría personalizada</td>
+                            <td class="col-mayor win">✅ VIP incluida</td>
+                            <td class="col-detal">General</td>
+                        </tr>
+                        <tr>
+                            <td>Reposición y rotación</td>
+                            <td class="col-mayor win">✅ Prioridad stock</td>
+                            <td class="col-detal">Sujeto a disponibilidad</td>
+                        </tr>
+                        <tr>
+                            <td>Rentabilidad</td>
+                            <td class="col-mayor win">Alta (resale)</td>
+                            <td class="col-detal">Uso personal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="compare-cta-row">
+                <a href="https://wa.me/573106120366?text=Hola%2C%20estoy%20interesado%20en%20ser%20distribuidor%2C%20%C2%BFpueden%20darme%20informaci%C3%B3n%3F" class="btn btn-primary" target="_blank" rel="noopener" onclick="fbq('track','Lead')">Quiero ser distribuidor</a>
+                <a href="https://wa.me/573106120366?text=Hola%2C%20quiero%20comprar%20una%20pijama%20al%20detal%2C%20%C2%BFqu%C3%A9%20tienen%20disponible%3F" class="btn btn-ghost" target="_blank" rel="noopener" onclick="fbq('track','Contact')">Comprar al detal</a>
+            </div>
         </div>
+
+        <p class="legal-note legal-note--bottom">*Precios mayoristas aplican según volumen de compra. Consulta disponibilidad de referencias.</p>
     </div>
 </section>
 
@@ -521,13 +649,25 @@
             <p>Simple, rápido y 100% seguro a través de WhatsApp.</p>
         </div>
         <div class="steps-track">
-            <div class="step-item"><div class="step-num">01</div><h4>Escríbenos</h4><p>Contáctanos por nuestra línea oficial de WhatsApp.</p></div>
+            <div class="step-item" data-reveal data-reveal-delay="0">
+                <div class="step-num-bg" aria-hidden="true">01</div>
+                <div class="step-num">01</div><h4>Escríbenos</h4><p>Contáctanos por nuestra línea oficial de WhatsApp.</p>
+            </div>
             <div class="step-divider" aria-hidden="true"></div>
-            <div class="step-item"><div class="step-num">02</div><h4>Elige</h4><p>Recibe el catálogo actualizado y selecciona referencias.</p></div>
+            <div class="step-item" data-reveal data-reveal-delay="120">
+                <div class="step-num-bg" aria-hidden="true">02</div>
+                <div class="step-num">02</div><h4>Elige</h4><p>Recibe el catálogo actualizado y selecciona referencias.</p>
+            </div>
             <div class="step-divider" aria-hidden="true"></div>
-            <div class="step-item"><div class="step-num">03</div><h4>Paga</h4><p>Realiza el pago por nuestros canales autorizados.</p></div>
+            <div class="step-item" data-reveal data-reveal-delay="240">
+                <div class="step-num-bg" aria-hidden="true">03</div>
+                <div class="step-num">03</div><h4>Paga</h4><p>Realiza el pago por nuestros canales autorizados.</p>
+            </div>
             <div class="step-divider" aria-hidden="true"></div>
-            <div class="step-item"><div class="step-num">04</div><h4>Recibe</h4><p>Despachamos tu pedido directo a tu ciudad.</p></div>
+            <div class="step-item" data-reveal data-reveal-delay="360">
+                <div class="step-num-bg" aria-hidden="true">04</div>
+                <div class="step-num">04</div><h4>Recibe</h4><p>Despachamos tu pedido directo a tu ciudad en 1–5 días hábiles.</p>
+            </div>
         </div>
         <div class="section-cta">
             <a href="https://wa.me/573106120366?text=Hola%2C%20quiero%20realizar%20un%20pedido%2C%20%C2%BFme%20pueden%20ayudar%3F" class="btn btn-primary" target="_blank" rel="noopener" onclick="fbq('track','Contact')">Iniciar mi pedido ahora</a>
@@ -544,50 +684,73 @@
             <p>Producción propia, diseños reales. Síguenos y sé la primera en ver las nuevas colecciones.</p>
         </div>
 
-        <div class="tt-tabs" role="tablist" aria-label="Marcas en TikTok">
-            <button class="tt-tab active" role="tab" aria-selected="true" aria-controls="tt-sara" data-brand="sara">
-                <img src="Logo_Saramantha_Pijamas.jpeg" alt="" class="tt-tab-logo">
-                <span class="tt-tab-name">Saramantha</span>
-                <span class="tt-tab-followers">29.3K</span>
+        <!-- Tabs tipo Stories -->
+        <div class="tt-stories-row" role="tablist" aria-label="Marcas en TikTok">
+            <button class="tt-story active" role="tab" aria-selected="true" aria-controls="tt-sara" data-brand="sara">
+                <div class="tt-story-ring">
+                    <img src="Logo_Saramantha_Pijamas.jpeg" alt="Saramantha" class="tt-story-img">
+                </div>
+                <span class="tt-story-name">Saramantha</span>
+                <span class="tt-story-followers">29.3K</span>
             </button>
-            <button class="tt-tab" role="tab" aria-selected="false" aria-controls="tt-maj" data-brand="maj">
-                <img src="Logo_Sublimados_Majestic.jpeg" alt="" class="tt-tab-logo">
-                <span class="tt-tab-name">Majestic</span>
-                <span class="tt-tab-followers">24.6K</span>
+            <button class="tt-story" role="tab" aria-selected="false" aria-controls="tt-maj" data-brand="maj">
+                <div class="tt-story-ring">
+                    <img src="Logo_Sublimados_Majestic.jpeg" alt="Majestic" class="tt-story-img">
+                </div>
+                <span class="tt-story-name">Majestic</span>
+                <span class="tt-story-followers">24.6K</span>
             </button>
-            <button class="tt-tab" role="tab" aria-selected="false" aria-controls="tt-lovely" data-brand="lovely">
-                <img src="Logo_Lovely_Store_Pijamas.jpeg" alt="" class="tt-tab-logo">
-                <span class="tt-tab-name">Lovely</span>
-                <span class="tt-tab-followers">9.9K</span>
+            <button class="tt-story" role="tab" aria-selected="false" aria-controls="tt-lovely" data-brand="lovely">
+                <div class="tt-story-ring">
+                    <img src="Logo_Lovely_Store_Pijamas.jpeg" alt="Lovely" class="tt-story-img">
+                </div>
+                <span class="tt-story-name">Lovely</span>
+                <span class="tt-story-followers">9.9K</span>
             </button>
-            <button class="tt-tab" role="tab" aria-selected="false" aria-controls="tt-reina" data-brand="reina">
-                <img src="Logo_Sueños_de_Reina.jpeg" alt="" class="tt-tab-logo">
-                <span class="tt-tab-name">Sueño de Reina</span>
-                <span class="tt-tab-followers">4.4K</span>
+            <button class="tt-story" role="tab" aria-selected="false" aria-controls="tt-reina" data-brand="reina">
+                <div class="tt-story-ring">
+                    <img src="Logo_Sueños_de_Reina.jpeg" alt="Sueño de Reina" class="tt-story-img">
+                </div>
+                <span class="tt-story-name">Sueño de Reina</span>
+                <span class="tt-story-followers">4.4K</span>
             </button>
         </div>
 
         <!-- Panel Saramantha -->
         <div class="tt-panel active" id="tt-sara" role="tabpanel">
             <div class="tt-panel-inner">
-                <div class="tt-videos">
-                    <div class="tt-video-card">
-                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7595345874427989268" data-tiktok-url="https://www.tiktok.com/@saramantha63/video/7595345874427989268">
-                            <div class="tt-video-placeholder">
-                                <img src="3Carrusel.jpg" alt="Video Saramantha en TikTok" class="tt-thumb" loading="lazy">
-                                <button class="tt-play-btn" aria-label="Reproducir video Saramantha">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M8 5v14l11-7z"/></svg>
-                                </button>
-                                <p class="tt-placeholder-label">🏭 Producción Saramantha · Toca para ver</p>
+                <!-- Tarjeta de video enriquecida (sin iframe) -->
+                <div class="tt-rich-card">
+                    <div class="tt-rich-thumb-wrap">
+                        <img src="3Carrusel.jpg" alt="Saramantha en TikTok — producción de pijamas" class="tt-rich-thumb" loading="lazy">
+                        <div class="tt-rich-overlay">
+                            <div class="tt-rich-tiktok-badge">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+                                TikTok
+                            </div>
+                            <div class="tt-rich-engagement">
+                                <span>🔥 Producción Saramantha</span>
                             </div>
                         </div>
+                        <a href="https://www.tiktok.com/@saramantha63/video/7595345874427989268" target="_blank" rel="noopener" class="tt-rich-play-btn" aria-label="Ver video en TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M8 5v14l11-7z"/></svg>
+                            <span>Ver en TikTok</span>
+                        </a>
+                    </div>
+                    <div class="tt-rich-video-meta">
+                        <span class="tt-rich-stat">❤️ 3.3K likes</span>
+                        <span class="tt-rich-stat">🔖 382 guardados</span>
+                        <span class="tt-rich-stat">💬 Ver comentarios</span>
                     </div>
                 </div>
+
                 <div class="tt-info">
-                    <img src="Logo_Saramantha_Pijamas.jpeg" alt="Saramantha" class="tt-brand-logo">
-                    <div class="tt-brand-meta">
-                        <h3>Saramantha</h3>
-                        <a href="https://www.tiktok.com/@saramantha63" target="_blank" rel="noopener" class="tt-handle">@saramantha63</a>
+                    <div class="tt-brand-header">
+                        <img src="Logo_Saramantha_Pijamas.jpeg" alt="Saramantha" class="tt-brand-logo">
+                        <div class="tt-brand-meta">
+                            <h3>Saramantha</h3>
+                            <a href="https://www.tiktok.com/@saramantha63" target="_blank" rel="noopener" class="tt-handle">@saramantha63</a>
+                        </div>
                     </div>
                     <div class="tt-stats">
                         <div class="tt-stat"><span class="tt-stat-val">29.3K</span><span class="tt-stat-label">Seguidores</span></div>
@@ -613,24 +776,36 @@
         <!-- Panel Majestic -->
         <div class="tt-panel" id="tt-maj" role="tabpanel" hidden>
             <div class="tt-panel-inner">
-                <div class="tt-videos">
-                    <div class="tt-video-card">
-                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7568863588400598292" data-tiktok-url="https://www.tiktok.com/@majesticsublimadoscali/video/7568863588400598292">
-                            <div class="tt-video-placeholder">
-                                <img src="15Carrusel.jpg" alt="Video Sublimados Majestic en TikTok" class="tt-thumb" loading="lazy">
-                                <button class="tt-play-btn" aria-label="Reproducir video Majestic">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M8 5v14l11-7z"/></svg>
-                                </button>
-                                <p class="tt-placeholder-label">🎨 Fábrica Majestic · 21.6K ❤️ · Toca para ver</p>
+                <div class="tt-rich-card">
+                    <div class="tt-rich-thumb-wrap">
+                        <img src="15Carrusel.jpg" alt="Sublimados Majestic en TikTok — 21.6K likes" class="tt-rich-thumb" loading="lazy">
+                        <div class="tt-rich-overlay">
+                            <div class="tt-rich-tiktok-badge">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+                                TikTok
+                            </div>
+                            <div class="tt-rich-engagement">
+                                <span>🎨 Fábrica Majestic · 21.6K ❤️</span>
                             </div>
                         </div>
+                        <a href="https://www.tiktok.com/@majesticsublimadoscali/video/7568863588400598292" target="_blank" rel="noopener" class="tt-rich-play-btn" aria-label="Ver video en TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M8 5v14l11-7z"/></svg>
+                            <span>Ver en TikTok</span>
+                        </a>
+                    </div>
+                    <div class="tt-rich-video-meta">
+                        <span class="tt-rich-stat">❤️ 21.6K likes</span>
+                        <span class="tt-rich-stat">💬 1.4K comentarios</span>
+                        <span class="tt-rich-stat">🔥 Viral</span>
                     </div>
                 </div>
                 <div class="tt-info">
-                    <img src="Logo_Sublimados_Majestic.jpeg" alt="Majestic" class="tt-brand-logo">
-                    <div class="tt-brand-meta">
-                        <h3>Sublimados Majestic</h3>
-                        <a href="https://www.tiktok.com/@majesticsublimadoscali" target="_blank" rel="noopener" class="tt-handle">@majesticsublimadoscali</a>
+                    <div class="tt-brand-header">
+                        <img src="Logo_Sublimados_Majestic.jpeg" alt="Majestic" class="tt-brand-logo">
+                        <div class="tt-brand-meta">
+                            <h3>Sublimados Majestic</h3>
+                            <a href="https://www.tiktok.com/@majesticsublimadoscali" target="_blank" rel="noopener" class="tt-handle">@majesticsublimadoscali</a>
+                        </div>
                     </div>
                     <div class="tt-stats">
                         <div class="tt-stat"><span class="tt-stat-val">24.6K</span><span class="tt-stat-label">Seguidores</span></div>
@@ -656,24 +831,36 @@
         <!-- Panel Lovely -->
         <div class="tt-panel" id="tt-lovely" role="tabpanel" hidden>
             <div class="tt-panel-inner">
-                <div class="tt-videos">
-                    <div class="tt-video-card">
-                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7608207557877828885" data-tiktok-url="https://www.tiktok.com/@pijamas.lovelycolombia/video/7608207557877828885">
-                            <div class="tt-video-placeholder">
-                                <img src="7Carrusel.jpg" alt="Video Lovely Pijamas en TikTok" class="tt-thumb" loading="lazy">
-                                <button class="tt-play-btn" aria-label="Reproducir video Lovely">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M8 5v14l11-7z"/></svg>
-                                </button>
-                                <p class="tt-placeholder-label">💗 Maletines, accesorios y pijamas · Toca para ver</p>
+                <div class="tt-rich-card">
+                    <div class="tt-rich-thumb-wrap">
+                        <img src="7Carrusel.jpg" alt="Lovely Pijamas en TikTok — maletines y accesorios" class="tt-rich-thumb" loading="lazy">
+                        <div class="tt-rich-overlay">
+                            <div class="tt-rich-tiktok-badge">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+                                TikTok
+                            </div>
+                            <div class="tt-rich-engagement">
+                                <span>💗 Maletines, accesorios y pijamas</span>
                             </div>
                         </div>
+                        <a href="https://www.tiktok.com/@pijamas.lovelycolombia/video/7608207557877828885" target="_blank" rel="noopener" class="tt-rich-play-btn" aria-label="Ver video en TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M8 5v14l11-7z"/></svg>
+                            <span>Ver en TikTok</span>
+                        </a>
+                    </div>
+                    <div class="tt-rich-video-meta">
+                        <span class="tt-rich-stat">❤️ 2K likes</span>
+                        <span class="tt-rich-stat">🔖 327 guardados</span>
+                        <span class="tt-rich-stat">💗 Juvenil</span>
                     </div>
                 </div>
                 <div class="tt-info">
-                    <img src="Logo_Lovely_Store_Pijamas.jpeg" alt="Lovely" class="tt-brand-logo">
-                    <div class="tt-brand-meta">
-                        <h3>Lovely Store Pijamas</h3>
-                        <a href="https://www.tiktok.com/@pijamas.lovelycolombia" target="_blank" rel="noopener" class="tt-handle">@pijamas.lovelycolombia</a>
+                    <div class="tt-brand-header">
+                        <img src="Logo_Lovely_Store_Pijamas.jpeg" alt="Lovely" class="tt-brand-logo">
+                        <div class="tt-brand-meta">
+                            <h3>Lovely Store Pijamas</h3>
+                            <a href="https://www.tiktok.com/@pijamas.lovelycolombia" target="_blank" rel="noopener" class="tt-handle">@pijamas.lovelycolombia</a>
+                        </div>
                     </div>
                     <div class="tt-stats">
                         <div class="tt-stat"><span class="tt-stat-val">9.9K</span><span class="tt-stat-label">Seguidores</span></div>
@@ -699,24 +886,36 @@
         <!-- Panel Sueño de Reina -->
         <div class="tt-panel" id="tt-reina" role="tabpanel" hidden>
             <div class="tt-panel-inner">
-                <div class="tt-videos">
-                    <div class="tt-video-card">
-                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7547352871822707973" data-tiktok-url="https://www.tiktok.com/@suenodereina/video/7547352871822707973">
-                            <div class="tt-video-placeholder">
-                                <img src="11Carrusel.jpg" alt="Video Sueño de Reina en TikTok" class="tt-thumb" loading="lazy">
-                                <button class="tt-play-btn" aria-label="Reproducir video Sueño de Reina">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M8 5v14l11-7z"/></svg>
-                                </button>
-                                <p class="tt-placeholder-label">👑 Diseños kawaii temporada fría · Toca para ver</p>
+                <div class="tt-rich-card">
+                    <div class="tt-rich-thumb-wrap">
+                        <img src="11Carrusel.jpg" alt="Sueño de Reina en TikTok — diseños kawaii" class="tt-rich-thumb" loading="lazy">
+                        <div class="tt-rich-overlay">
+                            <div class="tt-rich-tiktok-badge">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+                                TikTok
+                            </div>
+                            <div class="tt-rich-engagement">
+                                <span>👑 Diseños kawaii temporada fría</span>
                             </div>
                         </div>
+                        <a href="https://www.tiktok.com/@suenodereina/video/7547352871822707973" target="_blank" rel="noopener" class="tt-rich-play-btn" aria-label="Ver video en TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M8 5v14l11-7z"/></svg>
+                            <span>Ver en TikTok</span>
+                        </a>
+                    </div>
+                    <div class="tt-rich-video-meta">
+                        <span class="tt-rich-stat">❤️ 2.3K likes</span>
+                        <span class="tt-rich-stat">💬 127 comentarios</span>
+                        <span class="tt-rich-stat">👑 Premium</span>
                     </div>
                 </div>
                 <div class="tt-info">
-                    <img src="Logo_Sueños_de_Reina.jpeg" alt="Sueño de Reina" class="tt-brand-logo">
-                    <div class="tt-brand-meta">
-                        <h3>Sueño de Reina</h3>
-                        <a href="https://www.tiktok.com/@suenodereina" target="_blank" rel="noopener" class="tt-handle">@suenodereina</a>
+                    <div class="tt-brand-header">
+                        <img src="Logo_Sueños_de_Reina.jpeg" alt="Sueño de Reina" class="tt-brand-logo">
+                        <div class="tt-brand-meta">
+                            <h3>Sueño de Reina</h3>
+                            <a href="https://www.tiktok.com/@suenodereina" target="_blank" rel="noopener" class="tt-handle">@suenodereina</a>
+                        </div>
                     </div>
                     <div class="tt-stats">
                         <div class="tt-stat"><span class="tt-stat-val">4.4K</span><span class="tt-stat-label">Seguidores</span></div>
@@ -847,6 +1046,59 @@
   /* ── Scroll shadow navbar ── */
   window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY>20); }, {passive:true});
 
+  /* ── PARALLAX HERO ── */
+  var heroBg  = document.getElementById('heroBg');
+  var heroImg = document.querySelector('.hero-product-img');
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && heroBg) {
+    window.addEventListener('scroll', function(){
+      var sy = window.scrollY;
+      var maxScroll = window.innerHeight;
+      if (sy <= maxScroll) {
+        heroBg.style.transform  = 'translateY(' + (sy * 0.28) + 'px)';
+        if (heroImg) heroImg.style.transform = 'translateY(' + (sy * 0.12) + 'px)';
+      }
+    }, {passive: true});
+  }
+
+  /* ── SCROLL REVEAL (Intersection Observer) ── */
+  if ('IntersectionObserver' in window && !prefersReduced) {
+    var revealObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var delay = el.getAttribute('data-reveal-delay') || 0;
+          setTimeout(function(){ el.classList.add('revealed'); }, parseInt(delay));
+          revealObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      revealObs.observe(el);
+    });
+  } else {
+    /* Sin soporte o motion reducido: mostrar todo directamente */
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      el.classList.add('revealed');
+    });
+  }
+
+  /* ── TRUST PILLS — animación entrada escalonada ── */
+  var pills = document.querySelectorAll('.trust-pill');
+  if ('IntersectionObserver' in window && !prefersReduced && pills.length) {
+    var pillObs = new IntersectionObserver(function(entries){
+      if (entries[0].isIntersecting) {
+        pills.forEach(function(p){ p.classList.add('pill-visible'); });
+        pillObs.disconnect();
+      }
+    }, { threshold: 0.5 });
+    pillObs.observe(pills[0].parentElement);
+  } else {
+    pills.forEach(function(p){ p.classList.add('pill-visible'); });
+  }
+
   /* ── Cookies y Tracking ── */
   var bar        = document.getElementById('cookieBar');
   var btnAccept  = document.getElementById('cookieAccept');
@@ -875,69 +1127,17 @@
     try{ localStorage.setItem('cookiesOk','0'); }catch(ex){}
   }); }
 
-  /* ── TikTok Tabs ── */
-  var ttTabs   = document.querySelectorAll('.tt-tab');
-  var ttPanels = document.querySelectorAll('.tt-panel');
-  ttTabs.forEach(function(tab){
+  /* ── TikTok Stories Tabs ── */
+  var ttStories = document.querySelectorAll('.tt-story');
+  var ttPanels  = document.querySelectorAll('.tt-panel');
+  ttStories.forEach(function(tab){
     tab.addEventListener('click', function(){
-      ttTabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      ttStories.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
       ttPanels.forEach(function(p){ p.classList.remove('active'); p.hidden=true; });
       tab.classList.add('active');
       tab.setAttribute('aria-selected','true');
-      var panel=document.getElementById(tab.getAttribute('aria-controls'));
+      var panel = document.getElementById(tab.getAttribute('aria-controls'));
       if(panel){ panel.classList.add('active'); panel.hidden=false; }
-    });
-  });
-
-  /* ── TikTok Lazy-load videos con fallback inteligente ── */
-  document.querySelectorAll('.tt-play-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var placeholder = btn.closest('.tt-video-placeholder');
-      var wrap = btn.closest('.tt-video-wrap');
-      var src  = wrap && wrap.getAttribute('data-src');
-      var tikUrl = wrap && wrap.getAttribute('data-tiktok-url');
-      if(!src || wrap.querySelector('iframe')) return;
-
-      /* Ocultar placeholder */
-      if(placeholder) placeholder.style.display = 'none';
-
-      /* Crear iframe */
-      var iframe = document.createElement('iframe');
-      iframe.src = src;
-      iframe.setAttribute('allowfullscreen','');
-      iframe.setAttribute('scrolling','no');
-      iframe.setAttribute('allow','encrypted-media;autoplay;');
-      iframe.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-presentation');
-      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:12px;display:block;';
-      wrap.style.paddingBottom = '0';
-      wrap.style.height = '560px';
-      wrap.appendChild(iframe);
-
-      /* Fallback: si el iframe no carga en 6s, mostramos aviso con enlace directo */
-      var fallbackTimer = setTimeout(function(){
-        if(!iframe.parentNode) return; /* ya fue removido */
-        var loaded = false;
-        try { loaded = iframe.contentDocument && iframe.contentDocument.readyState !== 'loading'; } catch(e){}
-        if(!loaded){
-          iframe.remove();
-          var fb = document.createElement('div');
-          fb.className = 'tt-fallback';
-          fb.innerHTML =
-            '<span class="tt-fallback-icon">📱</span>' +
-            '<p class="tt-fallback-msg">TikTok no pudo cargar en este navegador.<br>Ábrelo directo en la app.</p>' +
-            '<a href="' + (tikUrl || src) + '" target="_blank" rel="noopener" class="tt-fallback-btn">' +
-              '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>' +
-              'Ver en TikTok' +
-            '</a>';
-          wrap.appendChild(fb);
-          wrap.style.height = '340px';
-        }
-      }, 6000);
-
-      /* Si carga correctamente, cancelar fallback */
-      iframe.addEventListener('load', function(){
-        clearTimeout(fallbackTimer);
-      });
     });
   });
 
@@ -949,52 +1149,31 @@
     var btnP  = document.getElementById('igPrev');
     var btnN  = document.getElementById('igNext');
     if(!track||!cards.length) return;
-
     var cur = 0;
-
-    function vis(){
-      var w=window.innerWidth;
-      return w>=1024?3:w>=640?2:1;
-    }
+    function vis(){ var w=window.innerWidth; return w>=1024?3:w>=640?2:1; }
     function maxIdx(){ return Math.max(0,cards.length-vis()); }
-
-    /* Gap must match CSS margin-right exactly:
-       >=640px => 20px (desktop/tablet)
-       <640px  => 12px (mobile) */
-    function cardGap(){
-      return window.innerWidth>=640 ? 20 : 12;
-    }
-
-    function syncDots(){
-      dots.forEach(function(d,i){ d.classList.toggle('active',i===cur); });
-    }
-
+    function cardGap(){ return window.innerWidth>=640?20:12; }
+    function syncDots(){ dots.forEach(function(d,i){ d.classList.toggle('active',i===cur); }); }
     function goTo(idx){
       cur=Math.max(0,Math.min(idx,maxIdx()));
       var cw=cards[0].getBoundingClientRect().width;
       track.style.transform='translateX(-'+(cur*(cw+cardGap()))+'px)';
       syncDots();
     }
-
     if(btnP) btnP.addEventListener('click',function(){ goTo(cur-1); });
     if(btnN) btnN.addEventListener('click',function(){ goTo(cur+1); });
     dots.forEach(function(d,i){ d.addEventListener('click',function(){ goTo(i); }); });
-
-    /* Touch swipe */
     var tx=0;
     track.addEventListener('touchstart',function(e){ tx=e.touches[0].clientX; },{passive:true});
     track.addEventListener('touchend',function(e){
       var dx=tx-e.changedTouches[0].clientX;
       if(Math.abs(dx)>40) goTo(dx>0?cur+1:cur-1);
     },{passive:true});
-
-    /* Resize recalculate */
     var rTimer;
     window.addEventListener('resize',function(){
       clearTimeout(rTimer);
       rTimer=setTimeout(function(){ goTo(Math.min(cur,maxIdx())); },150);
     });
-
     syncDots();
   })();
 

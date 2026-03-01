@@ -1660,3 +1660,665 @@ p { color: var(--ink-mid); }
 }
 @media (max-width: 768px) { .ig-swipe-hint { display: block; } }
 
+
+/* ============================================================
+   MEJORAS V2 — Mayoristas + TikTok Stories
+   ============================================================ */
+
+/* ── PRUEBA SOCIAL STRIP ── */
+.social-proof-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: linear-gradient(135deg, var(--ink) 0%, #1a1a2e 100%);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sp-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  flex: 1 1 140px;
+}
+
+.sp-num {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--rose);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.sp-label {
+  font-size: .75rem;
+  color: rgba(255,255,255,.7);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.sp-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,.12);
+  flex-shrink: 0;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .sp-divider { display: block; }
+  .social-proof-strip { flex-wrap: nowrap; gap: 0; }
+  .sp-item { flex: 1; }
+}
+
+/* ── MICRO-CTAs EN TARJETAS ── */
+.advantage-microcta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--rose-dark);
+  text-decoration: none;
+  transition: color .2s, gap .2s;
+  gap: 2px;
+}
+.advantage-microcta:hover {
+  color: var(--gold);
+}
+
+/* ── TABLA COMPARATIVA ── */
+.compare-wrap {
+  margin-top: 52px;
+  background: var(--gray-light);
+  border-radius: var(--r-lg);
+  padding: 36px 28px 28px;
+}
+
+.compare-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.compare-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--r-md);
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: .9rem;
+  background: var(--white);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.compare-table thead th {
+  padding: 14px 18px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-align: center;
+  background: var(--ink);
+  color: rgba(255,255,255,.7);
+}
+
+.compare-table thead th:first-child {
+  text-align: left;
+  width: 36%;
+}
+
+.compare-table .col-mayor {
+  background: linear-gradient(135deg, var(--rose-dark) 0%, #b5607f 100%);
+  color: var(--white) !important;
+}
+
+.compare-table thead th.col-mayor {
+  color: var(--white);
+}
+
+.col-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.2);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: .72rem;
+}
+
+.compare-table tbody td {
+  padding: 13px 18px;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  color: var(--ink-mid);
+}
+
+.compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-table tbody tr:nth-child(even) td {
+  background: var(--gray-light);
+}
+
+.compare-table tbody tr:nth-child(even) td.col-mayor {
+  background: rgba(212,120,154,.08);
+}
+
+.compare-table tbody td.col-mayor {
+  font-weight: 600;
+  color: var(--rose-dark);
+  text-align: center;
+}
+
+.compare-table tbody td.win {
+  color: var(--rose-dark);
+  font-weight: 700;
+}
+
+.compare-table tbody td.col-detal {
+  text-align: center;
+  color: var(--gray);
+}
+
+.compare-table tbody td:first-child {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.compare-cta-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.legal-note--bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: .78rem;
+  color: var(--gray);
+}
+
+/* ── TIKTOK STORIES TABS ── */
+.tt-stories-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;
+  margin-bottom: 32px;
+  justify-content: flex-start;
+}
+.tt-stories-row::-webkit-scrollbar { display: none; }
+
+@media (min-width: 640px) {
+  .tt-stories-row { justify-content: center; }
+}
+
+.tt-story {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--r-md);
+  transition: transform .2s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tt-story:hover { transform: translateY(-3px); }
+.tt-story:focus-visible {
+  outline: 2px solid var(--rose-dark);
+  outline-offset: 2px;
+  border-radius: var(--r-md);
+}
+
+.tt-story-ring {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #ccc 0%, #aaa 100%);
+  transition: background .3s var(--ease), box-shadow .3s;
+}
+
+.tt-story.active .tt-story-ring,
+.tt-story:hover .tt-story-ring {
+  background: linear-gradient(135deg, var(--rose-dark) 0%, var(--gold) 100%);
+  box-shadow: 0 0 0 3px rgba(212,120,154,.25);
+}
+
+.tt-story-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  display: block;
+}
+
+.tt-story-name {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--ink-mid);
+  text-align: center;
+  line-height: 1.2;
+  max-width: 72px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tt-story.active .tt-story-name { color: var(--rose-dark); }
+
+.tt-story-followers {
+  font-size: .65rem;
+  font-weight: 700;
+  color: var(--rose-dark);
+  background: var(--rose-light);
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+/* ── TIKTOK RICH CARD (sin iframe) ── */
+.tt-rich-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-lg);
+}
+
+.tt-rich-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9/14;
+  overflow: hidden;
+  background: #111;
+}
+
+.tt-rich-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform .5s ease;
+}
+
+.tt-rich-card:hover .tt-rich-thumb {
+  transform: scale(1.04);
+}
+
+.tt-rich-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.5) 0%,
+    transparent 30%,
+    transparent 55%,
+    rgba(0,0,0,.75) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+  pointer-events: none;
+}
+
+.tt-rich-tiktok-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(1,1,1,.85);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+
+.tt-rich-engagement {
+  font-size: .8rem;
+  color: rgba(255,255,255,.9);
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0,0,0,.7);
+}
+
+.tt-rich-play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+  transition: background .2s;
+}
+
+.tt-rich-play-btn:hover {
+  background: rgba(0,0,0,.15);
+}
+
+.tt-rich-play-btn svg {
+  background: rgba(255,255,255,.92);
+  color: #010101;
+  border-radius: 50%;
+  padding: 14px;
+  width: 68px;
+  height: 68px;
+  padding-left: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.4);
+  transition: transform .2s, box-shadow .2s;
+  flex-shrink: 0;
+}
+
+.tt-rich-play-btn:hover svg {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+}
+
+.tt-rich-play-btn span {
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-shadow: 0 1px 6px rgba(0,0,0,.8);
+  background: rgba(1,1,1,.6);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+.tt-rich-video-meta {
+  display: flex;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--ink-soft);
+  flex-wrap: wrap;
+}
+
+.tt-rich-stat {
+  font-size: .75rem;
+  color: rgba(255,255,255,.65);
+  font-weight: 500;
+}
+
+/* ── Panel: reemplaza tt-videos con tt-rich-card ── */
+.tt-panel-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Info panel: ahora con header en fila */
+.tt-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tt-brand-header .tt-brand-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--rose-light);
+  flex-shrink: 0;
+}
+
+/* Responsive overrides */
+@media (min-width: 640px) {
+  .tt-panel-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .tt-rich-thumb-wrap {
+    aspect-ratio: 9/16;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tt-panel-inner {
+    grid-template-columns: 320px 1fr;
+    gap: 36px;
+  }
+  .tt-info {
+    position: sticky;
+    top: calc(var(--navbar-h) + 20px);
+  }
+}
+
+/* Remove old tt-tabs CSS override if still present */
+.tt-tabs { display: none !important; }
+
+/* ============================================================
+   MEJORAS V3 — Hero imagen real · Parallax · Scroll Reveal
+   Trust pills animadas · Steps decorativos · Firefox scrollbar
+   ============================================================ */
+
+/* ── Firefox scrollbar ── */
+* { scrollbar-color: var(--rose) var(--gray-light); scrollbar-width: thin; }
+
+/* ── HERO — layout split ── */
+.hero {
+  text-align: left;
+  align-items: stretch;
+  padding: 0;
+  min-height: 100svh;
+  min-height: 100vh;
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: calc(var(--navbar-h) + 40px) 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  min-height: 100svh;
+  min-height: 100vh;
+}
+
+/* Texto hero — centrado en móvil, izq en desktop */
+.hero .hero-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.hero .hero-ctas { justify-content: center; }
+.hero .trust-strip { justify-content: center; }
+
+/* Imagen hero */
+.hero-img-wrap {
+  width: 100%;
+  max-width: 380px;
+  flex-shrink: 0;
+}
+
+.hero-img-frame {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(14,14,14,.18);
+}
+
+.hero-product-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  will-change: transform;
+}
+
+/* Badge "Más vendida" */
+.hero-img-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+}
+.hero-badge-inner {
+  display: inline-block;
+  background: var(--white);
+  color: var(--ink);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+  letter-spacing: .04em;
+}
+
+/* Tag marca abajo */
+.hero-img-tag {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--r-md);
+  padding: 8px 14px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+.hero-brand-logo {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Desktop: layout lado a lado */
+@media (min-width: 900px) {
+  .hero-layout {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    padding-bottom: 80px;
+  }
+  .hero .hero-content {
+    text-align: left;
+    flex: 1;
+  }
+  .hero .hero-ctas { justify-content: flex-start; }
+  .hero .trust-strip { justify-content: flex-start; }
+  .hero-img-wrap {
+    max-width: 440px;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .hero-img-wrap { max-width: 500px; }
+}
+
+/* ── SCROLL REVEAL ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .65s var(--ease), transform .65s var(--ease);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── TRUST PILLS — entrada escalonada ── */
+.trust-pill {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .45s var(--ease) var(--pill-delay, .5s),
+              transform .45s var(--ease) var(--pill-delay, .5s);
+}
+.trust-pill.pill-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── STEPS — número decorativo de fondo ── */
+.step-item {
+  position: relative;
+  overflow: hidden;
+}
+.step-num-bg {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  font-family: var(--font-display);
+  font-size: 6.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--rose-dark);
+  opacity: .055;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -.02em;
+}
+
+/* ── HOVER BUTTON REFINEMENT ── */
+.btn-primary:hover, .btn-primary:focus-visible {
+  background: var(--rose-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212,120,154,.35);
+}
+
+/* ── MOTION REDUCIDO — override reveals ── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .trust-pill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-product-img,
+  #heroBg {
+    will-change: auto;
+  }
+}
