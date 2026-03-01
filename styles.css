@@ -2580,3 +2580,166 @@ p { color: var(--ink-mid); }
   .cmp-btn { margin: 20px 28px 28px; }
   .cmp-label { min-width: 140px; }
 }
+
+/* ============================================================
+   MARCAS V2 — Tarjeta completa clickeable + CTA destacado
+   ============================================================ */
+
+/* Toda la card es un enlace */
+.brand-card-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+/* Cursor pointer en toda la card */
+.brand-card { cursor: pointer; }
+
+/* ── Overlay sobre la imagen al hover ── */
+.brand-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(37, 211, 102, 0.88);  /* verde WhatsApp */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .28s var(--ease);
+  z-index: 3;
+}
+
+.brand-card:hover .brand-overlay,
+.brand-card:focus-within .brand-overlay {
+  opacity: 1;
+}
+
+/* En móvil táctil — mostrar overlay siempre semitransparente como hint */
+@media (hover: none) {
+  .brand-overlay {
+    opacity: 1;
+    background: rgba(37, 211, 102, 0.72);
+  }
+}
+
+.brand-overlay-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  transform: translateY(6px);
+  transition: transform .28s var(--ease);
+}
+
+.brand-card:hover .brand-overlay-inner {
+  transform: translateY(0);
+}
+
+.brand-overlay-inner svg {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.3));
+}
+
+.brand-overlay-inner span {
+  font-size: .88rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+
+/* ── CTA pill en la parte inferior de la card ── */
+.brand-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--wsp);        /* verde WhatsApp */
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+  padding: 11px 18px;
+  border-radius: var(--r-xl);
+  align-self: stretch;           /* ocupa todo el ancho */
+  justify-content: center;
+  margin-top: auto;
+  min-height: 46px;
+  transition: background .22s var(--ease), transform .2s var(--ease),
+              box-shadow .2s var(--ease);
+  box-shadow: 0 4px 14px rgba(37,211,102,.35);
+  letter-spacing: .01em;
+}
+
+.brand-card:hover .brand-cta {
+  background: #1db954;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37,211,102,.5);
+}
+
+/* Pulse sutil en el CTA para llamar la atención */
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 4px 14px rgba(37,211,102,.35); }
+  50%       { box-shadow: 0 4px 22px rgba(37,211,102,.6), 0 0 0 5px rgba(37,211,102,.12); }
+}
+
+.brand-cta {
+  animation: cta-pulse 2.8s ease-in-out infinite;
+}
+
+/* Parar la animación al hover para no distraer */
+.brand-card:hover .brand-cta {
+  animation: none;
+}
+
+/* Quitar el brand-btn viejo si quedara */
+.brand-btn { display: none; }
+
+/* Ajuste brand-info con el nuevo CTA */
+.brand-info {
+  padding: 20px 20px 20px;
+  gap: 10px;
+}
+
+.brand-info p {
+  margin-bottom: 14px;
+}
+
+/* ── Touch ripple hint — solo móvil ── */
+.brand-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-lg);
+  border: 2px solid transparent;
+  transition: border-color .25s var(--ease);
+  pointer-events: none;
+  z-index: 4;
+}
+.brand-card:hover::after,
+.brand-card:focus-within::after {
+  border-color: var(--wsp);
+}
+
+/* ── Hint "toca para ver" — solo visible en touch ── */
+.brand-logo-wrap::before {
+  content: '👆 Toca para ver catálogo';
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 100%);
+  color: rgba(255,255,255,.9);
+  font-size: .72rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 24px 8px 10px;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity .25s;
+  letter-spacing: .03em;
+}
+
+/* En desktop: ocultar hint ya que el overlay toma su rol */
+@media (hover: hover) {
+  .brand-logo-wrap::before { display: none; }
+}
