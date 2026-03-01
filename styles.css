@@ -1357,7 +1357,7 @@ p { color: var(--ink-mid); }
   .ig-card-body { padding: 14px 14px 16px; }
   .ig-brand-name { font-size: .88rem; }
   /* Imagen más baja en móvil para que todo quepa sin scroll */
-  .ig-card-img-wrap { height: 200px; }
+  .ig-card-img-wrap { height: 260px; }
   /* Swipe hint visible */
   .ig-swipe-hint { display: block; }
 }
@@ -1366,7 +1366,7 @@ p { color: var(--ink-mid); }
 .ig-card-img-link { display: block; text-decoration: none; }
 .ig-card-img-wrap {
   position: relative;
-  height: 240px;
+  height: 320px;
   overflow: hidden;
   border-radius: 0;
   cursor: pointer;
@@ -1383,6 +1383,17 @@ p { color: var(--ink-mid); }
 .ig-grad-lovely  { background: linear-gradient(135deg, #5b8dee 0%, #a084f0 40%, #f472b6 80%, #fb7dd5 100%); }
 .ig-grad-majestic{ background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 40%, #2563eb 70%, #06b6d4 100%); }
 .ig-grad-reina   { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 35%, #0f3460 60%, #533483 100%); }
+
+/* Foto real de producto */
+.ig-card-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .4s ease;
+  display: block;
+}
+.ig-card:hover .ig-card-photo { transform: scale(1.04); }
 
 /* Pattern overlay para dar textura */
 .ig-card-img-wrap::after {
