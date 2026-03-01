@@ -2322,3 +2322,261 @@ p { color: var(--ink-mid); }
     will-change: auto;
   }
 }
+
+/* ============================================================
+   COMPARATIVA V2 — Cards responsivas sin tabla
+   ============================================================ */
+
+/* Eliminar estilos de tabla vieja */
+.compare-table-scroll,
+.compare-table,
+.compare-cta-row { display: none; }
+
+/* Wrapper */
+.compare-wrap {
+  margin-top: 52px;
+  background: transparent;
+  padding: 0;
+}
+
+.compare-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  text-align: center;
+  margin-bottom: 32px;
+  color: var(--ink);
+}
+
+/* ── Grid de cards ── */
+.compare-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+  position: relative;
+}
+
+/* VS divisor — oculto en móvil */
+.cmp-vs {
+  display: none;
+}
+
+/* ── Card base ── */
+.cmp-card {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.cmp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Card Mayorista ── */
+.cmp-card--mayor {
+  background: var(--ink);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+/* Borde degradado rose-gold */
+.cmp-card--mayor::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--r-lg) + 2px);
+  background: linear-gradient(135deg, var(--rose-dark), var(--gold));
+  z-index: -1;
+}
+
+/* ── Card Detal ── */
+.cmp-card--detal {
+  background: var(--white);
+  border: 2px solid rgba(0,0,0,.07);
+}
+
+/* ── Header de card ── */
+.cmp-card-header {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.cmp-card--detal .cmp-card-header {
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.cmp-badge {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--r-xl);
+  margin-bottom: 10px;
+}
+.cmp-badge--star {
+  background: linear-gradient(135deg, var(--rose-dark), var(--gold));
+  color: var(--white);
+}
+
+.cmp-card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--white);
+  line-height: 1.2;
+}
+.cmp-card--detal .cmp-card-title {
+  color: var(--ink);
+}
+
+.cmp-card-sub {
+  font-size: .82rem;
+  color: rgba(255,255,255,.55);
+  margin: 0;
+}
+.cmp-card--detal .cmp-card-sub {
+  color: var(--gray);
+}
+
+/* ── Lista de filas ── */
+.cmp-list {
+  flex: 1;
+  padding: 8px 0;
+  list-style: none;
+  margin: 0;
+}
+
+.cmp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: background .18s;
+}
+.cmp-card--detal .cmp-row {
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.cmp-row:last-child { border-bottom: none; }
+
+.cmp-card--mayor .cmp-row:hover { background: rgba(255,255,255,.04); }
+.cmp-card--detal .cmp-row:hover { background: var(--gray-light); }
+
+.cmp-label {
+  font-size: .85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.65);
+  flex-shrink: 0;
+  min-width: 120px;
+}
+.cmp-card--detal .cmp-label {
+  color: var(--ink-mid);
+}
+
+.cmp-val {
+  font-size: .85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.45);
+  text-align: right;
+}
+.cmp-card--detal .cmp-val {
+  color: var(--gray);
+}
+
+/* WIN — valor destacado en mayorista */
+.cmp-val--win {
+  font-weight: 700;
+  color: var(--rose) !important;
+  background: rgba(240,184,205,.1);
+  padding: 3px 10px;
+  border-radius: var(--r-xl);
+  white-space: nowrap;
+}
+
+/* ── CTA dentro de cada card ── */
+.cmp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 24px 24px;
+  padding: 14px 24px;
+  border-radius: var(--r-xl);
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-decoration: none;
+  min-height: 50px;
+  transition: transform .2s var(--ease), opacity .2s, box-shadow .2s;
+}
+.cmp-btn:hover { transform: translateY(-2px); opacity: .92; }
+
+.cmp-btn--mayor {
+  background: linear-gradient(135deg, var(--rose-dark) 0%, var(--gold) 100%);
+  color: var(--white);
+  box-shadow: 0 6px 20px rgba(212,120,154,.35);
+}
+.cmp-btn--mayor:hover {
+  box-shadow: 0 10px 28px rgba(212,120,154,.5);
+}
+
+.cmp-btn--detal {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid rgba(0,0,0,.15);
+}
+.cmp-btn--detal:hover {
+  background: var(--gray-light);
+  border-color: var(--ink);
+}
+
+/* ── TABLET: lado a lado ── */
+@media (min-width: 640px) {
+  .compare-cards {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .cmp-vs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 52px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: .08em;
+    z-index: 2;
+  }
+
+  .cmp-card {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Mayorista ligeramente elevada */
+  .cmp-card--mayor {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 56px rgba(14,14,14,.22);
+  }
+  .cmp-card--mayor:hover {
+    transform: translateY(-10px);
+  }
+}
+
+/* ── DESKTOP: más espacio interno ── */
+@media (min-width: 900px) {
+  .cmp-row { padding: 14px 28px; }
+  .cmp-card-header { padding: 28px 28px 18px; }
+  .cmp-btn { margin: 20px 28px 28px; }
+  .cmp-label { min-width: 140px; }
+}
