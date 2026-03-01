@@ -921,9 +921,9 @@
     }
     function maxIdx(){ return Math.max(0,cards.length-vis()); }
 
-    /* Gap debe coincidir exactamente con el margin-right del CSS:
-       ≥640px  → 20px  (desktop/tablet: .ig-card { margin-right:20px })
-       <640px  → 12px  (móvil: card ocupa calc(100%-24px) con margin-right:12px) */
+    /* Gap must match CSS margin-right exactly:
+       >=640px => 20px (desktop/tablet)
+       <640px  => 12px (mobile) */
     function cardGap(){
       return window.innerWidth>=640 ? 20 : 12;
     }
@@ -943,8 +943,25 @@
     if(btnN) btnN.addEventListener('click',function(){ goTo(cur+1); });
     dots.forEach(function(d,i){ d.addEventListener('click',function(){ goTo(i); }); });
 
-    /* Swipe táctil */
+    /* Touch swipe */
     var tx=0;
     track.addEventListener('touchstart',function(e){ tx=e.touches[0].clientX; },{passive:true});
     track.addEventListener('touchend',function(e){
-      var d
+      var dx=tx-e.changedTouches[0].clientX;
+      if(Math.abs(dx)>40) goTo(dx>0?cur+1:cur-1);
+    },{passive:true});
+
+    /* Resize recalculate */
+    var rTimer;
+    window.addEventListener('resize',function(){
+      clearTimeout(rTimer);
+      rTimer=setTimeout(function(){ goTo(Math.min(cur,maxIdx())); },150);
+    });
+
+    syncDots();
+  })();
+
+})();
+</script>
+</body>
+</html>
