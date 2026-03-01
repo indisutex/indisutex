@@ -633,15 +633,18 @@
       <button class="cookie-btn" id="cookieDecline" style="background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;">Solo esenciales</button>
     </div>
 </div>
-
 <script>
 (function(){
   'use strict';
 
-  /* ── Hamburguesa ── */
+  /* Hamburguesa */
   var burger = document.getElementById('burgerBtn');
   var menu   = document.getElementById('navMenu');
   var header = document.getElementById('navbar');
+  function closeMenu(){
+    menu.classList.remove('is-open'); burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open');
+  }
   burger.addEventListener('click', function(e){
     e.stopPropagation();
     var open = menu.classList.toggle('is-open');
@@ -652,83 +655,60 @@
   document.querySelectorAll('.nav-link').forEach(function(l){ l.addEventListener('click', closeMenu); });
   document.addEventListener('click', function(e){ if(menu.classList.contains('is-open') && !header.contains(e.target)) closeMenu(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
-  function closeMenu(){
-    menu.classList.remove('is-open'); burger.classList.remove('is-open');
-    burger.setAttribute('aria-expanded','false'); document.body.classList.remove('menu-open');
-  }
 
-  /* ── Scroll shadow navbar ── */
+  /* Scroll shadow navbar */
   window.addEventListener('scroll', function(){ header.classList.toggle('scrolled', window.scrollY>20); }, {passive:true});
 
-  /* ── Cookies y Tracking Scripts (Consentimiento Meta/Clarity) ── */
-  var bar = document.getElementById('cookieBar');
-  var btn = document.getElementById('cookieAccept');
+  /* Cookies y Tracking */
+  var bar        = document.getElementById('cookieBar');
+  var btnAccept  = document.getElementById('cookieAccept');
   var btnDecline = document.getElementById('cookieDecline');
 
-  function loadTrackingScripts() {
-      // 1. Inicializar Meta Pixel (solo tras aceptar)
-      fbq('init', '703208404945102');
-      fbq('track', 'PageView');
-      // Noscript fallback para Meta Pixel (cargado dinámicamente tras consentimiento)
-      var ns = document.createElement('img');
-      ns.src = 'https://www.facebook.com/tr?id=703208404945102&ev=PageView&noscript=1';
-      ns.height = 1; ns.width = 1; ns.style.display = 'none';
-      document.body.appendChild(ns);
-
-      // 2. Inicializar Microsoft Clarity (solo tras aceptar)
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "voabt7y6vp");
+  function loadTracking(){
+    if(typeof fbq === 'function'){ fbq('init','703208404945102'); fbq('track','PageView'); }
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,'clarity','script','voabt7y6vp');
   }
 
-  // Comprobar si ya existe el consentimiento en LocalStorage
-  if(localStorage.getItem('cookiesOk') === '1') {
-      loadTrackingScripts();
-  } else if(localStorage.getItem('cookiesOk') === '0') {
-      // Usuario rechazó, no cargar nada
-  } else if(bar) {
-      bar.classList.add('visible');
-  }
+  try{
+    var consent = localStorage.getItem('cookiesOk');
+    if(consent==='1'){ loadTracking(); }
+    else if(consent==='0'){ /* rechazado */ }
+    else if(bar){ bar.classList.add('visible'); }
+  }catch(ex){ if(bar) bar.classList.add('visible'); }
 
-  // Dar consentimiento al hacer clic en Aceptar
-  if(btn) {
-      btn.addEventListener('click', function(){
-          bar.classList.remove('visible');
-          try{ localStorage.setItem('cookiesOk','1'); }catch(e){}
-          loadTrackingScripts();
-      });
-  }
+  if(btnAccept){ btnAccept.addEventListener('click',function(){
+    bar.classList.remove('visible');
+    try{ localStorage.setItem('cookiesOk','1'); }catch(ex){}
+    loadTracking();
+  }); }
+  if(btnDecline){ btnDecline.addEventListener('click',function(){
+    bar.classList.remove('visible');
+    try{ localStorage.setItem('cookiesOk','0'); }catch(ex){}
+  }); }
 
-  // Rechazar cookies — solo esenciales
-  if(btnDecline) {
-      btnDecline.addEventListener('click', function(){
-          bar.classList.remove('visible');
-          try{ localStorage.setItem('cookiesOk','0'); }catch(e){}
-      });
-  }
-
-    }, 1500);
-
-  /* ── TikTok Tabs ── */
-  var tabs   = document.querySelectorAll('.tt-tab');
-  var panels = document.querySelectorAll('.tt-panel');
-  tabs.forEach(function(tab){
+  /* TikTok Tabs - filtros de marca */
+  var ttTabs   = document.querySelectorAll('.tt-tab');
+  var ttPanels = document.querySelectorAll('.tt-panel');
+  ttTabs.forEach(function(tab){
     tab.addEventListener('click', function(){
-      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      panels.forEach(function(p){ p.classList.remove('active'); p.hidden=true; });
-      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      ttTabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      ttPanels.forEach(function(p){ p.classList.remove('active'); p.hidden = true; });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
       var panel = document.getElementById(tab.getAttribute('aria-controls'));
-      if(panel){ panel.classList.add('active'); panel.hidden=false; }
+      if(panel){ panel.classList.add('active'); panel.hidden = false; }
     });
   });
 
-  /* ── TikTok Lazy-load de videos (iframe nativo) ── */
+  /* TikTok Lazy-load videos */
   document.querySelectorAll('.tt-play-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       var wrap = btn.closest('.tt-video-wrap');
-      var src  = wrap.getAttribute('data-src');
+      var src  = wrap && wrap.getAttribute('data-src');
       if(!src || wrap.querySelector('iframe')) return;
       var iframe = document.createElement('iframe');
       iframe.src = src;
@@ -743,56 +723,57 @@
     });
   });
 
-  /* ── Instagram Carousel – scroll-snap nativo + flechas JS ── */
+  /* Instagram Carousel */
   (function(){
-    var outer  = document.querySelector('.ig-track-outer');
-    var track  = document.getElementById('igTrack');
-    var cards  = Array.prototype.slice.call(document.querySelectorAll('.ig-card'));
-    var dots   = Array.prototype.slice.call(document.querySelectorAll('.ig-dot'));
-    var prev   = document.getElementById('igPrev');
-    var next   = document.getElementById('igNext');
+    var track = document.getElementById('igTrack');
+    var cards = document.querySelectorAll('.ig-card');
+    var dots  = document.querySelectorAll('.ig-dot');
+    var btnP  = document.getElementById('igPrev');
+    var btnN  = document.getElementById('igNext');
     if(!track || !cards.length) return;
 
     var cur = 0;
 
     function vis(){
       var w = window.innerWidth;
-      return w>=1024 ? 3 : w>=640 ? 2 : 1;
+      return w >= 1024 ? 3 : w >= 640 ? 2 : 1;
     }
-    function max(){ return Math.max(0, cards.length - vis()); }
+    function maxIdx(){ return Math.max(0, cards.length - vis()); }
 
     function syncDots(){
       dots.forEach(function(d,i){ d.classList.toggle('active', i===cur); });
     }
 
-    function scrollTo(idx){
-      cur = Math.max(0, Math.min(idx, max()));
-      var cardEl = cards[0];
-      var style  = window.getComputedStyle(cardEl);
-      var gap    = parseInt(style.marginRight||0) || 20;
-      var w      = cardEl.offsetWidth + gap;
-      track.style.transform = 'translateX(-'+(cur*w)+'px)';
+    function goTo(idx){
+      cur = Math.max(0, Math.min(idx, maxIdx()));
+      var card = cards[0];
+      var cw   = card.getBoundingClientRect().width;
+      var gap  = 20;
+      track.style.transform = 'translateX(-' + (cur * (cw + gap)) + 'px)';
       syncDots();
     }
 
-    if(prev) prev.addEventListener('click', function(){ scrollTo(cur-1); });
-    if(next) next.addEventListener('click', function(){ scrollTo(cur+1); });
-    dots.forEach(function(d,i){ d.addEventListener('click', function(){ scrollTo(i); }); });
+    if(btnP) btnP.addEventListener('click', function(){ goTo(cur - 1); });
+    if(btnN) btnN.addEventListener('click', function(){ goTo(cur + 1); });
+    dots.forEach(function(d,i){ d.addEventListener('click', function(){ goTo(i); }); });
 
-    // Touch swipe
-    var tx=0;
-    track.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
-    track.addEventListener('touchend',function(e){
-      var dx=tx-e.changedTouches[0].clientX;
-      if(Math.abs(dx)>40) scrollTo(dx>0?cur+1:cur-1);
-    },{passive:true});
+    var tx = 0;
+    track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend',   function(e){
+      var dx = tx - e.changedTouches[0].clientX;
+      if(Math.abs(dx) > 40) goTo(dx > 0 ? cur + 1 : cur - 1);
+    }, {passive:true});
 
-    // Reset on resize
-    window.addEventListener('resize', function(){ cur=Math.min(cur,max()); scrollTo(cur); });
+    var rTimer;
+    window.addEventListener('resize', function(){
+      clearTimeout(rTimer);
+      rTimer = setTimeout(function(){ goTo(Math.min(cur, maxIdx())); }, 150);
+    });
 
     syncDots();
   })();
 
-
+})();
+</script>
 </body>
 </html>
