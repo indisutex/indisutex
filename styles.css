@@ -2743,3 +2743,183 @@ p { color: var(--ink-mid); }
 @media (hover: hover) {
   .brand-logo-wrap::before { display: none; }
 }
+
+/* ============================================================
+   FIXES V7 — Brand cards móvil + botones WhatsApp consistentes
+   ============================================================ */
+
+/* ── BRAND CARD — fix móvil completo ── */
+
+/* La card completa como bloque flex vertical */
+.brand-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El link ocupa toda la card */
+.brand-card-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Logo wrap — siempre relativo para el overlay */
+.brand-logo-wrap {
+  position: relative !important;
+  flex-shrink: 0;
+}
+
+/* Overlay en móvil — oculto por defecto, visible solo en touch activo */
+@media (hover: none) {
+  .brand-overlay {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+  /* Quitar el pseudo hint anterior */
+  .brand-logo-wrap::before { display: none !important; }
+}
+
+/* brand-info flex column para que CTA quede abajo */
+.brand-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 18px 18px !important;
+  gap: 8px;
+}
+
+.brand-info h3 { margin-bottom: 4px; }
+.brand-info p  { flex: 1; margin-bottom: 0; }
+
+/* ── CTA VERDE — CORREGIDO para móvil y web ── */
+.brand-cta {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px 20px;
+  background: var(--wsp);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: .88rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  border-radius: var(--r-xl);
+  min-height: 48px;
+  box-shadow: 0 4px 16px rgba(37,211,102,.4);
+  transition: background .2s, transform .2s, box-shadow .2s;
+  animation: cta-pulse 2.8s ease-in-out infinite;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.brand-cta svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.brand-card:hover .brand-cta,
+.brand-card:active .brand-cta {
+  background: #1db954;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37,211,102,.55);
+  animation: none;
+}
+
+/* ═══════════════════════════════════════════════════
+   SISTEMA UNIFICADO DE BOTONES WHATSAPP
+   Aplica a: btn-wsp, cmp-btn--mayor, nav-cta, ig-btn--wsp
+   ═══════════════════════════════════════════════════ */
+
+/* Botones WhatsApp en paneles TikTok */
+.btn-wsp {
+  background: var(--wsp) !important;
+  box-shadow: 0 4px 14px rgba(37,211,102,.35);
+  transition: background .2s, transform .2s, box-shadow .2s !important;
+}
+.btn-wsp:hover {
+  background: #1db954 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 22px rgba(37,211,102,.5) !important;
+}
+
+/* WhatsApp en carrusel Instagram */
+.ig-btn--wsp {
+  background: var(--wsp) !important;
+  box-shadow: 0 2px 10px rgba(37,211,102,.3);
+}
+.ig-btn--wsp:hover {
+  background: #1db954 !important;
+  transform: translateY(-1px);
+}
+
+/* CTA Mayorista en comparativa — mantiene degradado pero más llamativo */
+.cmp-btn--mayor {
+  box-shadow: 0 6px 20px rgba(212,120,154,.4) !important;
+  font-size: .92rem !important;
+  min-height: 52px !important;
+}
+.cmp-btn--mayor:hover {
+  box-shadow: 0 10px 30px rgba(212,120,154,.55) !important;
+  transform: translateY(-3px) !important;
+  opacity: 1 !important;
+}
+
+/* Nav CTA WhatsApp */
+.nav-cta {
+  animation: nav-wsp-pulse 3s ease-in-out infinite;
+}
+@keyframes nav-wsp-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  50%       { box-shadow: 0 0 0 5px rgba(37,211,102,.18); }
+}
+
+/* Botón hero primario — más visual */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,.1) 100%);
+  pointer-events: none;
+}
+
+/* ── BOTÓN FLOTANTE WSP — más llamativo en móvil ── */
+.wsp-float {
+  width: 62px !important;
+  height: 62px !important;
+  box-shadow: 0 4px 20px rgba(37,211,102,.5) !important;
+}
+
+/* ── Consistencia táctil — todos los botones ── */
+@media (max-width: 768px) {
+  .btn,
+  .brand-cta,
+  .btn-wsp,
+  .btn-tiktok,
+  .cmp-btn,
+  .ig-btn,
+  .nav-cta {
+    min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* brand-cta en móvil — más grande y sólido */
+  .brand-cta {
+    font-size: .92rem !important;
+    padding: 14px 20px !important;
+    min-height: 52px !important;
+    border-radius: 26px !important;
+  }
+}
