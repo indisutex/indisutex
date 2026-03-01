@@ -447,14 +447,17 @@ p { color: var(--ink-mid); }
   border-radius: var(--r-lg);
   padding: 36px 28px;
   box-shadow: var(--shadow-card);
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-  /* Estado inicial para fade-in */
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), opacity .5s var(--ease);
+  opacity: 1;
+  transform: translateY(0);
+}
+.advantage-card.fade-ready {
   opacity: 0;
   transform: translateY(20px);
 }
-.advantage-card.in-view {
-  opacity: 1;
-  transform: translateY(0);
+.advantage-card.in-view, .advantage-card.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
   transition: opacity .5s var(--ease), transform .5s var(--ease),
               box-shadow .3s var(--ease), outline .2s;
 }
@@ -481,12 +484,16 @@ p { color: var(--ink-mid); }
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  transform: translateY(0);
+}
+.brand-card.fade-ready {
   opacity: 0;
   transform: translateY(20px);
 }
-.brand-card.in-view {
-  opacity: 1;
-  transform: translateY(0);
+.brand-card.in-view, .brand-card.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
   transition: opacity .5s var(--ease), transform .5s var(--ease);
 }
 .brand-card:nth-child(2) { transition-delay: .08s; }
@@ -589,12 +596,16 @@ p { color: var(--ink-mid); }
   background: var(--gray-light);
   border-radius: var(--r-lg);
   border: 1px solid rgba(0,0,0,.05);
+  opacity: 1;
+  transform: translateY(0);
+}
+.step-item.fade-ready {
   opacity: 0;
   transform: translateY(16px);
 }
-.step-item.in-view {
-  opacity: 1;
-  transform: translateY(0);
+.step-item.in-view, .step-item.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
   transition: opacity .5s var(--ease), transform .5s var(--ease);
 }
 .step-item:nth-child(2) { transition-delay: .1s; }
@@ -1294,6 +1305,7 @@ p { color: var(--ink-mid); }
   gap: 20px;
   transition: transform .45s cubic-bezier(.4,0,.2,1);
   will-change: transform;
+  align-items: stretch;
 }
 
 /* ── Flechas ── */
@@ -1319,7 +1331,8 @@ p { color: var(--ink-mid); }
 /* ── Tarjetas ── */
 .ig-card {
   flex: 0 0 calc(33.333% - 14px);
-  min-width: 280px;
+  min-width: 0;
+  max-width: 420px;
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
@@ -1332,20 +1345,22 @@ p { color: var(--ink-mid); }
 }
 
 @media (max-width: 1023px) {
-  .ig-card { flex: 0 0 calc(50% - 10px); }
+  .ig-card { flex: 0 0 calc(50% - 10px); max-width: none; }
 }
 @media (max-width: 639px) {
-  .ig-card { flex: 0 0 calc(100% - 0px); min-width: unset; }
+  .ig-card { flex: 0 0 100%; max-width: none; }
   .ig-arrow { width: 36px; height: 36px; }
+  .ig-carousel-wrapper { gap: 6px; }
 }
 
 /* ── Imagen / preview visual ── */
 .ig-card-img-link { display: block; text-decoration: none; }
 .ig-card-img-wrap {
   position: relative;
-  height: 220px;
+  height: 240px;
   overflow: hidden;
   border-radius: 0;
+  cursor: pointer;
 }
 
 /* Gradientes de color por marca — visual de "preview" sin necesitar imagen */
@@ -1411,19 +1426,20 @@ p { color: var(--ink-mid); }
   content: 'Ver en Instagram →';
   position: absolute;
   inset: 0;
-  background: rgba(225,48,108,.82);
-  backdrop-filter: blur(2px);
+  background: rgba(225,48,108,.85);
+  backdrop-filter: blur(3px);
   display: flex; align-items: center; justify-content: center;
   color: #fff;
   font-weight: 700;
-  font-size: .9rem;
+  font-size: 1rem;
   letter-spacing: .06em;
   opacity: 0;
   z-index: 10;
-  transition: opacity .25s;
+  transition: opacity .3s;
   border-radius: 0;
 }
-.ig-card:hover .ig-card-img-wrap::before { opacity: 1; }
+.ig-card:hover .ig-card-img-wrap::before,
+.ig-card:focus-within .ig-card-img-wrap::before { opacity: 1; }
 
 /* ── Body de la tarjeta ── */
 .ig-card-body { padding: 16px 18px 18px; }
@@ -1536,4 +1552,19 @@ p { color: var(--ink-mid); }
   display: none;
 }
 @media (max-width: 768px) { .ig-swipe-hint { display: block; } }
+
+/* ═══════════════════════════════════════
+   SEGURIDAD: Nunca ocultar contenido de secciones oscuras
+   ═══════════════════════════════════════ */
+.section-dark .brand-card,
+.section-dark .brand-card.fade-ready {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.advantage-card:not(.fade-ready),
+.brand-card:not(.fade-ready),
+.step-item:not(.fade-ready) {
+  opacity: 1;
+  transform: translateY(0);
+}
 

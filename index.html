@@ -709,14 +709,26 @@
       });
   }
 
-  /* ── Fade-in viewport ── */
+  /* ── Fade-in viewport (robusto: visible por defecto, fade es mejora progresiva) ── */
   var faders = document.querySelectorAll('.advantage-card, .brand-card, .step-item');
   if('IntersectionObserver' in window){
+    faders.forEach(function(el){ el.classList.add('fade-ready'); });
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target); } });
-    }, {threshold:0.12});
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.remove('fade-ready');
+          en.target.classList.add('visible');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:0.05, rootMargin:'0px 0px -40px 0px'});
     faders.forEach(function(el){ io.observe(el); });
   } else { faders.forEach(function(el){ el.classList.add('visible'); }); }
+  setTimeout(function(){
+    document.querySelectorAll('.fade-ready').forEach(function(el){
+      el.classList.remove('fade-ready'); el.classList.add('visible');
+    });
+  }, 1500);
 
   /* ── TikTok Tabs ── */
   var tabs   = document.querySelectorAll('.tt-tab');
@@ -750,11 +762,12 @@
     });
   });
 
-  /* ── Instagram Carousel ── */
+  /* ── Instagram Carousel (reescrito: CSS scroll-snap nativo + JS para dots/flechas) ── */
   (function(){
-    var track = document.getElementById('igTrack');
-    var cards = document.querySelectorAll('.ig-card');
-    var dots  = document.querySelectorAll('.ig-dot');
+    var outer = document.querySelector('.ig-track-outer');
+    var track  = document.getElementById('igTrack');
+    var cards  = document.querySelectorAll('.ig-card');
+    var dots   = document.querySelectorAll('.ig-dot');
     var btnPrev = document.getElementById('igPrev');
     var btnNext = document.getElementById('igNext');
     if(!track || !cards.length) return;
@@ -763,37 +776,52 @@
     var total = cards.length;
 
     function getVisibleCount(){
-      if(window.innerWidth >= 1024) return 3;
-      if(window.innerWidth >= 640)  return 2;
+      var w = window.innerWidth;
+      if(w >= 1024) return 3;
+      if(w >= 640)  return 2;
       return 1;
     }
 
-    function maxIndex(){
-      return Math.max(0, total - getVisibleCount());
+    function maxIndex(){ return Math.max(0, total - getVisibleCount()); }
+
+    function getCardWidth(){
+      if(!cards[0]) return 0;
+      var rect = cards[0].getBoundingClientRect();
+      return rect.width + 20; // width + gap
+    }
+
+    function updateDots(){
+      dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
     }
 
     function goTo(idx){
       current = Math.max(0, Math.min(idx, maxIndex()));
-      var cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight || 0);
-      // Use gap from CSS
-      var gap = 20;
-      track.style.transform = 'translateX(-' + (current * (cards[0].offsetWidth + gap)) + 'px)';
-      dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
+      var w = getCardWidth();
+      track.style.transform = w > 0
+        ? 'translateX(-' + (current * w) + 'px)'
+        : 'translateX(-' + (current * (100 / getVisibleCount())) + '%)';
+      updateDots();
     }
 
     if(btnPrev) btnPrev.addEventListener('click', function(){ goTo(current - 1); });
     if(btnNext) btnNext.addEventListener('click', function(){ goTo(current + 1); });
     dots.forEach(function(dot, i){ dot.addEventListener('click', function(){ goTo(i); }); });
 
-    // Touch/swipe
     var startX = 0;
     track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
     track.addEventListener('touchend', function(e){
       var diff = startX - e.changedTouches[0].clientX;
-      if(Math.abs(diff) > 50){ goTo(diff > 0 ? current+1 : current-1); }
+      if(Math.abs(diff) > 40){ goTo(diff > 0 ? current+1 : current-1); }
     }, {passive:true});
 
-    window.addEventListener('resize', function(){ goTo(current); });
+    var resizeTimer;
+    window.addEventListener('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function(){ goTo(current); }, 100);
+    });
+
+    // Init after paint
+    requestAnimationFrame(function(){ setTimeout(function(){ updateDots(); }, 50); });
   })();
 
 
