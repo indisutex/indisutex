@@ -447,19 +447,9 @@ p { color: var(--ink-mid); }
   border-radius: var(--r-lg);
   padding: 36px 28px;
   box-shadow: var(--shadow-card);
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease), opacity .5s var(--ease);
-  opacity: 1;
-  transform: translateY(0);
-}
-.advantage-card.fade-ready {
-  opacity: 0;
-  transform: translateY(20px);
-}
-.advantage-card.in-view, .advantage-card.visible {
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
   opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity .5s var(--ease), transform .5s var(--ease),
-              box-shadow .3s var(--ease), outline .2s;
+  transform: none !important;
 }
 .advantage-card:hover {
   transform: translateY(-6px);
@@ -486,15 +476,6 @@ p { color: var(--ink-mid); }
   flex-direction: column;
   opacity: 1;
   transform: translateY(0);
-}
-.brand-card.fade-ready {
-  opacity: 0;
-  transform: translateY(20px);
-}
-.brand-card.in-view, .brand-card.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity .5s var(--ease), transform .5s var(--ease);
 }
 .brand-card:nth-child(2) { transition-delay: .08s; }
 .brand-card:nth-child(3) { transition-delay: .16s; }
@@ -599,15 +580,6 @@ p { color: var(--ink-mid); }
   opacity: 1;
   transform: translateY(0);
 }
-.step-item.fade-ready {
-  opacity: 0;
-  transform: translateY(16px);
-}
-.step-item.in-view, .step-item.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity .5s var(--ease), transform .5s var(--ease);
-}
 .step-item:nth-child(2) { transition-delay: .1s; }
 .step-item:nth-child(4) { transition-delay: .2s; }
 .step-item:nth-child(6) { transition-delay: .3s; }
@@ -628,14 +600,7 @@ p { color: var(--ink-mid); }
 }
 .step-item p { font-size: .9rem; }
 
-/* ── VISIBLE ALIAS (JS usa .visible, CSS legacy usa .in-view) ── */
-.advantage-card.visible,
-.brand-card.visible,
-.step-item.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity .5s var(--ease), transform .5s var(--ease), box-shadow .3s var(--ease) !important;
-}
+
 
 /* ── BRAND LOGO WRAP (logos circulares en tarjetas de marca) ── */
 .brand-logo-wrap {
@@ -1302,7 +1267,7 @@ p { color: var(--ink-mid); }
 
 .ig-track {
   display: flex;
-  gap: 20px;
+  gap: 0;
   transition: transform .45s cubic-bezier(.4,0,.2,1);
   will-change: transform;
   align-items: stretch;
@@ -1333,6 +1298,7 @@ p { color: var(--ink-mid); }
   flex: 0 0 calc(33.333% - 14px);
   min-width: 0;
   max-width: 420px;
+  margin-right: 20px;
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
@@ -1345,12 +1311,12 @@ p { color: var(--ink-mid); }
 }
 
 @media (max-width: 1023px) {
-  .ig-card { flex: 0 0 calc(50% - 10px); max-width: none; }
+  .ig-card { flex: 0 0 calc(50% - 10px); max-width: none; margin-right: 20px; }
 }
 @media (max-width: 639px) {
-  .ig-card { flex: 0 0 100%; max-width: none; }
+  .ig-card { flex: 0 0 calc(100% - 0px); max-width: none; margin-right: 0; }
   .ig-arrow { width: 36px; height: 36px; }
-  .ig-carousel-wrapper { gap: 6px; }
+  .ig-carousel-wrapper { gap: 4px; }
 }
 
 /* ── Imagen / preview visual ── */
@@ -1552,19 +1518,4 @@ p { color: var(--ink-mid); }
   display: none;
 }
 @media (max-width: 768px) { .ig-swipe-hint { display: block; } }
-
-/* ═══════════════════════════════════════
-   SEGURIDAD: Nunca ocultar contenido de secciones oscuras
-   ═══════════════════════════════════════ */
-.section-dark .brand-card,
-.section-dark .brand-card.fade-ready {
-  opacity: 1 !important;
-  transform: none !important;
-}
-.advantage-card:not(.fade-ready),
-.brand-card:not(.fade-ready),
-.step-item:not(.fade-ready) {
-  opacity: 1;
-  transform: translateY(0);
-}
 
