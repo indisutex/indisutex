@@ -572,12 +572,13 @@
             <div class="tt-panel-inner">
                 <div class="tt-videos">
                     <div class="tt-video-card">
-                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7595345874427989268">
+                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7595345874427989268" data-tiktok-url="https://www.tiktok.com/@saramantha63/video/7595345874427989268">
                             <div class="tt-video-placeholder">
+                                <img src="3Carrusel.jpg" alt="Video Saramantha en TikTok" class="tt-thumb" loading="lazy">
                                 <button class="tt-play-btn" aria-label="Reproducir video Saramantha">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M8 5v14l11-7z"/></svg>
                                 </button>
-                                <p class="tt-placeholder-label">🏭 Producción Saramantha</p>
+                                <p class="tt-placeholder-label">🏭 Producción Saramantha · Toca para ver</p>
                             </div>
                         </div>
                     </div>
@@ -614,12 +615,13 @@
             <div class="tt-panel-inner">
                 <div class="tt-videos">
                     <div class="tt-video-card">
-                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7568863588400598292">
+                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7568863588400598292" data-tiktok-url="https://www.tiktok.com/@majesticsublimadoscali/video/7568863588400598292">
                             <div class="tt-video-placeholder">
+                                <img src="15Carrusel.jpg" alt="Video Sublimados Majestic en TikTok" class="tt-thumb" loading="lazy">
                                 <button class="tt-play-btn" aria-label="Reproducir video Majestic">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M8 5v14l11-7z"/></svg>
                                 </button>
-                                <p class="tt-placeholder-label">🎨 Fábrica Majestic · 21.6K ❤️</p>
+                                <p class="tt-placeholder-label">🎨 Fábrica Majestic · 21.6K ❤️ · Toca para ver</p>
                             </div>
                         </div>
                     </div>
@@ -656,12 +658,13 @@
             <div class="tt-panel-inner">
                 <div class="tt-videos">
                     <div class="tt-video-card">
-                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7608207557877828885">
+                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7608207557877828885" data-tiktok-url="https://www.tiktok.com/@pijamas.lovelycolombia/video/7608207557877828885">
                             <div class="tt-video-placeholder">
+                                <img src="7Carrusel.jpg" alt="Video Lovely Pijamas en TikTok" class="tt-thumb" loading="lazy">
                                 <button class="tt-play-btn" aria-label="Reproducir video Lovely">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M8 5v14l11-7z"/></svg>
                                 </button>
-                                <p class="tt-placeholder-label">💗 Maletines, accesorios y pijamas</p>
+                                <p class="tt-placeholder-label">💗 Maletines, accesorios y pijamas · Toca para ver</p>
                             </div>
                         </div>
                     </div>
@@ -698,12 +701,13 @@
             <div class="tt-panel-inner">
                 <div class="tt-videos">
                     <div class="tt-video-card">
-                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7547352871822707973">
+                        <div class="tt-video-wrap" data-src="https://www.tiktok.com/embed/v2/7547352871822707973" data-tiktok-url="https://www.tiktok.com/@suenodereina/video/7547352871822707973">
                             <div class="tt-video-placeholder">
+                                <img src="11Carrusel.jpg" alt="Video Sueño de Reina en TikTok" class="tt-thumb" loading="lazy">
                                 <button class="tt-play-btn" aria-label="Reproducir video Sueño de Reina">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M8 5v14l11-7z"/></svg>
                                 </button>
-                                <p class="tt-placeholder-label">👑 Diseños kawaii temporada fría</p>
+                                <p class="tt-placeholder-label">👑 Diseños kawaii temporada fría · Toca para ver</p>
                             </div>
                         </div>
                     </div>
@@ -885,22 +889,55 @@
     });
   });
 
-  /* ── TikTok Lazy-load videos ── */
+  /* ── TikTok Lazy-load videos con fallback inteligente ── */
   document.querySelectorAll('.tt-play-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var wrap=btn.closest('.tt-video-wrap');
-      var src=wrap&&wrap.getAttribute('data-src');
-      if(!src||wrap.querySelector('iframe')) return;
-      var iframe=document.createElement('iframe');
-      iframe.src=src;
+      var placeholder = btn.closest('.tt-video-placeholder');
+      var wrap = btn.closest('.tt-video-wrap');
+      var src  = wrap && wrap.getAttribute('data-src');
+      var tikUrl = wrap && wrap.getAttribute('data-tiktok-url');
+      if(!src || wrap.querySelector('iframe')) return;
+
+      /* Ocultar placeholder */
+      if(placeholder) placeholder.style.display = 'none';
+
+      /* Crear iframe */
+      var iframe = document.createElement('iframe');
+      iframe.src = src;
       iframe.setAttribute('allowfullscreen','');
       iframe.setAttribute('scrolling','no');
-      iframe.setAttribute('allow','encrypted-media;');
-      iframe.style.cssText='width:100%;height:100%;border:none;border-radius:12px;display:block;';
-      wrap.style.paddingBottom='0';
-      wrap.style.height='560px';
-      wrap.innerHTML='';
+      iframe.setAttribute('allow','encrypted-media;autoplay;');
+      iframe.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-presentation');
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:12px;display:block;';
+      wrap.style.paddingBottom = '0';
+      wrap.style.height = '560px';
       wrap.appendChild(iframe);
+
+      /* Fallback: si el iframe no carga en 6s, mostramos aviso con enlace directo */
+      var fallbackTimer = setTimeout(function(){
+        if(!iframe.parentNode) return; /* ya fue removido */
+        var loaded = false;
+        try { loaded = iframe.contentDocument && iframe.contentDocument.readyState !== 'loading'; } catch(e){}
+        if(!loaded){
+          iframe.remove();
+          var fb = document.createElement('div');
+          fb.className = 'tt-fallback';
+          fb.innerHTML =
+            '<span class="tt-fallback-icon">📱</span>' +
+            '<p class="tt-fallback-msg">TikTok no pudo cargar en este navegador.<br>Ábrelo directo en la app.</p>' +
+            '<a href="' + (tikUrl || src) + '" target="_blank" rel="noopener" class="tt-fallback-btn">' +
+              '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>' +
+              'Ver en TikTok' +
+            '</a>';
+          wrap.appendChild(fb);
+          wrap.style.height = '340px';
+        }
+      }, 6000);
+
+      /* Si carga correctamente, cancelar fallback */
+      iframe.addEventListener('load', function(){
+        clearTimeout(fallbackTimer);
+      });
     });
   });
 

@@ -708,6 +708,7 @@ p { color: var(--ink-mid); }
   overflow: hidden;
 }
 
+/* ── Thumbnail: foto real del carrusel como fondo ── */
 .tt-video-placeholder {
   position: absolute;
   inset: 0;
@@ -715,40 +716,126 @@ p { color: var(--ink-mid); }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
   cursor: pointer;
-  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: #111;
+  overflow: hidden;
 }
+
+/* Imagen thumbnail real */
+.tt-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .4s ease;
+}
+.tt-video-placeholder:hover .tt-thumb { transform: scale(1.04); }
+
+/* Overlay degradado para legibilidad */
 .tt-video-placeholder::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(240,184,205,.12), transparent 65%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.15) 0%,
+    rgba(0,0,0,.08) 35%,
+    rgba(0,0,0,.45) 75%,
+    rgba(0,0,0,.72) 100%
+  );
+  z-index: 1;
 }
 
+/* Badge TikTok top-left */
+.tt-video-placeholder::after {
+  content: '▶ TikTok';
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #010101;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 3;
+}
+
+/* Botón play centrado */
 .tt-play-btn {
-  width: 68px; height: 68px;
-  background: rgba(240,184,205,.9);
-  color: var(--ink);
+  width: 72px; height: 72px;
+  background: rgba(255,255,255,.92);
+  color: #010101;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform .2s var(--ease), background .2s;
-  z-index: 1;
-  padding-left: 4px; /* center play icon */
+  transition: transform .2s ease, background .2s, box-shadow .2s;
+  z-index: 2;
+  padding-left: 5px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.35);
 }
-.tt-play-btn:hover { transform: scale(1.12); background: var(--rose-dark); color: var(--white); }
+.tt-play-btn:hover {
+  transform: scale(1.12);
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+}
 
+/* Label en la parte inferior */
 .tt-placeholder-label {
-  font-size: .8rem;
-  color: rgba(255,255,255,.7);
-  z-index: 1;
+  position: absolute;
+  bottom: 18px;
+  left: 0; right: 0;
+  font-size: .82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.92);
+  z-index: 2;
   text-align: center;
   padding: 0 16px;
+  text-shadow: 0 1px 4px rgba(0,0,0,.6);
 }
+
+/* ── Fallback: cuando TikTok bloquea el iframe ── */
+.tt-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: linear-gradient(145deg, #1a1a2e 0%, #0f3460 100%);
+  z-index: 5;
+  padding: 24px;
+  text-align: center;
+}
+.tt-fallback-icon { font-size: 2.4rem; }
+.tt-fallback-msg {
+  color: rgba(255,255,255,.85);
+  font-size: .85rem;
+  line-height: 1.5;
+}
+.tt-fallback-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #010101;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: .85rem;
+  font-weight: 600;
+  margin-top: 4px;
+  transition: transform .2s, opacity .2s;
+}
+.tt-fallback-btn:hover { transform: scale(1.05); opacity: .9; }
 
 /* ── TIKTOK INFO ── */
 .tt-info {
